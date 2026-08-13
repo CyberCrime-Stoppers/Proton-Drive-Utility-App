@@ -1,9 +1,10 @@
-# proton-drive-utility-App
-This is the UnOfficial Proton Drive Utility. which is in beta.
-Released Date: 07/03/2026 [MM/DD/YYYY]
-App: v1.1.6 - updated: 08/12/2026
-Built with Python + GTK4 + Libadwaita
-Opened Sourced & Publicly Available
+# Proton Drive Utility App 
+- Unofficial
+- Currently in: Beta.
+- Released Date: 07/03/2026. [MM/DD/YYYY]
+- App version: v1.1.6 - updated: 08/12/2026. [MM/DD/YYYY]
+- Language: Python + GTK4 + Libadwaita.
+- Opened Sourced & Publicly Available.
 
 
 This is not your typical Proton Drive app. Its a utility to manage your upload or download within the App
