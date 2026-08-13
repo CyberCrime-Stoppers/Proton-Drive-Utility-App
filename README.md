@@ -10,7 +10,7 @@ _________________________________________________________
 
 This is not your typical Proton Drive app. Its a utility to manage your upload or download within the App
 
-<img src="/screenshot/home.png" width="200" height="100" alt="Logo">
+<img src="screenshots/home.png" width="200" height="100" alt="Logo">
 
 This App is intended to work with the Proton drive cli "binary file". This app can execute commands that are supported, their are plenty of options in the GUI within the app. so you don't have to use the Termanal. there will be more updates with the app and if proton will update the proton drive cli "binary file".
 
