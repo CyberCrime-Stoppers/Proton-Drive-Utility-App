@@ -1,4 +1,4 @@
-# proton-drive-utilities
+# proton-drive-utility-App
 This is the UnOfficial Proton Drive Utility. which is in beta.
 Released Date: 07/03/2026 [MM/DD/YYYY]
 App: v1.1.6 - updated: 08/12/2026
