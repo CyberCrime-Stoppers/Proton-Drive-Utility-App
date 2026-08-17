@@ -29,14 +29,20 @@ you can always email me:
 
 give-me-ideas@mailservices2.simplelogin.com
 
-About page.
+About page
+
 <img src="screenshot/about.png" width="800" height="800" alt="Logo">
 
+
 Fixed and Default directory Uploads and Downloads from/to your proton drive and linux system.
+
+
 <img src="screenshot/fixed-upload.png" width="800" height="800" alt="Logo">
 <img src="screenshot/fixed-downloads.png" width="800" height="800" alt="Logo">
 
+
 Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system.
+
 <img src="screenshot/custom-upload.png" width="800" height="800" alt="Logo">
 <img src="screenshot/custom-downloads.png" width="800" height="800" alt="Logo">
 
