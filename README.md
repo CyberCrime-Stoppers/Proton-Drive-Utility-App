@@ -43,7 +43,7 @@ Fixed and Default directory Uploads and Downloads from/to your proton drive and 
 Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system.
 
 - Custom documents - uploads page
-<img src="screenshot/custom_upload_documents.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="Logo">
 - Custom documents - downloads page
-<img src="screenshot/custom_download_documents.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="Logo">
 
