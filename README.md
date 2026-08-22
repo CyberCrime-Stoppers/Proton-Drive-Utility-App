@@ -28,7 +28,9 @@ of the many benefits listed above. ☝️
 
 Thank you, <strong> Proton AG </strong>. The community will love and experiment with this app, developing their own ways of using it and wanting more flexibility with Proton's services.
 
-<strong> Home Page </strong>
+
+ 
+ - Home Page
 <img src="screenshot/v126/home_page.png" width="600" height="600" alt="Logo">
 
 ## Compatibility
@@ -74,7 +76,8 @@ give-me-ideas@mailservices2.simplelogin.com
 
 ## Screenshots of the App
 
-About page
+ 
+ - About page
 
 <img src="screenshot/v126/about_page.png" width="400" height="400" alt="Logo">
 
