@@ -8,15 +8,25 @@
 
 _________________________________________________________
 
- There are many great ways to use this app
-      - "The Proton AG team is working hard to build the official Proton Drive for Linux systems"
-          Having a Proton utility app comes with all sorts of benefits.
-           * 1. Importing/Exporting in and out of your Proton Drive is just a click of a button.
-           * 2. A quick way to download everything, rather than using the Proton Drive web interface.
-           * 3. Flexibility for lower-end hardware.
-           * 4. The ability to download multiple times, so you know your data is always backed up and safe.
-           * etc - You can probably think of more amazing uses for this great app.
-         Thank you, Proton AG. The community will love and experiment with this app, developing their own ways of using and wanting more flexibility with Proton's services.
+## 🌟 Ways to Use This App
+
+There are many great ways to use this app.  
+<mark>The Proton AG team is working hard</mark> to build the official Proton Drive for Linux systems.
+
+Having a Proton utility app comes with all sorts of benefits:
+
+- <strong>📤 Import/Export</strong> – Just a click of a button
+- <strong>⬇️ Quick Downloads</strong> – Faster than the web interface
+- <strong>💻 Lower-End Hardware Friendly</strong>
+- <strong>🔄 Redundancy</strong> – Download multiple times for safe backups
+
+> 💡 *You can probably think of more amazing uses for this great app.*
+
+---
+
+Thank you, <strong>Proton AG</strong>. The community will love and experiment with this app, developing their own ways of using it and wanting more flexibility with Proton's services.
+
+
 
 <img src="screenshot/v126/home_page.png" width="600" height="600" alt="Logo">
 
