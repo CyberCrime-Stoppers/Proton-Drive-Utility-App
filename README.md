@@ -10,7 +10,7 @@ _________________________________________________________
 
 This is not your typical Proton Drive app. Its a utility to manage your upload or download within the App
 
-<img src="screenshot/v126/home_page.png" width="800" height="800" alt="Logo">
+<img src="screenshot/v126/home_page.png" width="400" height="400" alt="Logo">
 
 This App is intended to work with the Proton drive cli "binary file". This app can execute commands that are supported, their are plenty of options in the GUI within the app. so you don't have to use the Termanal. there will be more updates with the app and if proton will update the proton drive cli "binary file".
 
@@ -31,20 +31,19 @@ give-me-ideas@mailservices2.simplelogin.com
 
 About page
 
-<img src="screenshot/v126/about_page.png" width="800" height="800" alt="Logo">
+<img src="screenshot/v126/about_page.png" width="400" height="400" alt="Logo">
 
 
 Fixed and Default directory Uploads and Downloads from/to your proton drive and linux system.
 
 
-<img src="screenshot/v126/custom_fixed_uploader.png" width="800" height="800" alt="Logo">
-<img src="screenshot/v126/custom_fixed_downloader.png" width="800" height="800" alt="Logo">
-
+<img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="Logo">
 
 Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system.
 
 - Custom documents - uploads page
-<img src="screenshot/custom_upload_documents.png" width="800" height="800" alt="Logo">
+<img src="screenshot/custom_upload_documents.png" width="400" height="400" alt="Logo">
 - Custom documents - downloads page
-<img src="screenshot/custom_download_documents.png" width="800" height="800" alt="Logo">
+<img src="screenshot/custom_download_documents.png" width="400" height="400" alt="Logo">
 
