@@ -8,26 +8,25 @@
 
 _________________________________________________________
 
-## 🌟 Ways to Use This App
+## 🌟 Lists of benefits on Using This App
 
-There are many great ways to use this app.  
+There are many great ways to use this app. 
 <mark>The Proton AG team is working hard</mark> to build the official Proton Drive for Linux systems.
 
 Having a Proton utility app comes with all sorts of benefits:
 
-- <strong>📤 Import/Export</strong> – Just a click of a button
-- <strong>⬇️ Quick Downloads</strong> – Faster than the web interface
-- <strong>💻 Lower-End Hardware Friendly</strong>
-- <strong>🔄 Redundancy</strong> – Download multiple times for safe backups
-
+- <strong>📤 Importing/Exporting in and out of your Proton Drive is just a click of a button.
+- <strong>⬇️ A quick way to download everything, rather than using the Proton Drive web interface.
+- <strong>💻 Flexibility for lower-end hardware.
+- <strong>🔄 The ability to download multiple times, so you know your data is always backed up and safe.
+- 
 > 💡 *You can probably think of more amazing uses for this great app.*
 
 ---
 
-Thank you, <strong>Proton AG</strong>. The community will love and experiment with this app, developing their own ways of using it and wanting more flexibility with Proton's services.
+Thank you, <strong> Proton AG </strong>. The community will love and experiment with this app, developing their own ways of using it and wanting more flexibility with Proton's services.
 
-
-
+Home Page
 <img src="screenshot/v126/home_page.png" width="600" height="600" alt="Logo">
 
 This App is intended to work with the Proton drive cli "binary file". This app can execute commands that are supported, their are plenty of options in the GUI within the app. so you don't have to use the Termanal. there will be more updates with the app and if proton will update the proton drive cli "binary file".
