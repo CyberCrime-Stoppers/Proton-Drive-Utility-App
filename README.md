@@ -82,17 +82,23 @@ give-me-ideas@mailservices2.simplelogin.com
 <img src="screenshot/v126/about_page.png" width="400" height="400" alt="Logo">
 
 
-Custom Fixed directory Uploads and Downloads from/to your proton drive and linux system.
+## Custom Fixed directory Uploads and Downloads from/to your proton drive and linux system.
 
-- Custom fixed documents - uploads page
+  
+  - Custom fixed documents - uploads page
 <img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="Logo">
-- Custom fixed documents - download page
+
+ 
+  - Custom fixed documents - download page
 <img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="Logo">
 
-Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system.
+## Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system.
 
-- Custom documents - uploads page
+ 
+ - Custom documents - uploads page
 <img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="Logo">
-- Custom documents - downloads page
+
+ 
+ - Custom documents - downloads page
 <img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="Logo">
 
