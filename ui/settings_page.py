@@ -33,7 +33,7 @@ class SettingsPage:
 
         container = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
-            spacing=20,
+            spacing=15,
             valign=Gtk.Align.CENTER,
             halign=Gtk.Align.CENTER,
             margin_top=20,

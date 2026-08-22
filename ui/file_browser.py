@@ -20,7 +20,7 @@ class FileBrowserWindow(Adw.Window):
         self.set_modal(True)
         self.set_default_size(700, 500)
 
-        self.current_path = start_path or os.path.expanduser("~")
+        self.current_path = start_path or os.path.expanduser("/")
         self.selected_file = None
 
         self._build_ui()

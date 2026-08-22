@@ -24,16 +24,31 @@ class AboutPage:
         container.append(title)
 
         info = Gtk.Label(label=(
-           "\n ProtonDrive Utility App v1.1.6"
-           "\n Built with Python + GTK4 + libadwaita"
-           "\n Open Sourced & Publicly Available\n"
-           "\n This App is intended to help Linux Users to easily upload their data\n securely by default to Proton Drive Cloud. \n not limited to the use of a NAS\n"
-           "\n This is an Unofficial Proton Utility - It's built as a utility not your typical proton drive for Windows in mind.\n"
-           "\n This app abides by Proton AG and Europian Privacy Laws. \n In other words this app is a tool, not a telemetry collector of any kind \n or things sending back to the developers request.\n"
-           "\n This app is not the gateway to authenticate with proton.\n only works with the native proton-drive cli.\n"
-           "\n In order to function properly install \n and copy the proton-drive cli to \n /usr/bin/proton-drive to get straight \n into using this app. otherwise \n you will need to update the \n app binary source code reference on 'proton-drive cli' \n to your preferred directory.\n"
-           "\n Release Date: 07/03/2026.\n"
-        ))
+           "\n ProtonDrive Utility App v1.2.6"
+           "\n Release Date: 07/03/2026."
+           "\n It's Unofficial."
+           "\n Currently In: Beta."
+           "\n Built with Python + GTK4 + libadwaita."
+           "\n Open Source & Publicly Available.\n"
+           "\n"
+           "\n"
+           "\n This app is a utility for users who want to use \n the Proton Drive CLI (Command Line Interface) without needing the terminal.\n"
+           "\n This app only works with the native proton-drive CLI.\n"
+           "\n"
+           "\n If you like the app, please share it and enjoy what this project has to offer, give it a like."
+           "\n This wouldn't exist or be possible if the Proton AG team \n never released the Proton Drive CLI binary.\n"
+           "\n"
+           "\n There are many great ways to use this app."
+           "\n The Proton AG team is working hard to build the official \n Proton Drive for Linux systems."
+           "\n Having a Proton utility app comes with all sorts of benefits:"
+           "\n 1. Importing/Exporting in and out of your Proton Drive is just a click of a button."
+           "\n 2. A quick way to download everything, rather than using the Proton Drive web interface."
+           "\n 3. Flexibility for lower-end hardware."
+           "\n 4. The ability to download multiple times, so you know your data is always backed up and safe."
+           "\n You can probably think of more amazing uses for this great app.\n"
+           "\n"
+           "\n Thank you, Proton AG. The community will love and experiment \n with this, developing their own ways of using \n and wanting more flexibility with Proton's services."
+           ))
         info.add_css_class("dim-label")
         container.append(info)
 

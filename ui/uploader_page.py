@@ -51,8 +51,8 @@ class UploaderPage:
         local_box.set_size_request(400, -1)
 
         self.entry_local = Gtk.Entry()
-        self.entry_local.set_placeholder_text("~/Documents")
-        self.entry_local.set_text(os.path.expanduser("~/Documents"))
+        self.entry_local.set_placeholder_text("Click Browse: to upload a file in to Proton Drive default directory")
+        self.entry_local.set_text(os.path.expanduser("Click Browse: to upload a file in to Proton Drive default directory"))
         self.entry_local.set_hexpand(True)
         local_box.append(self.entry_local)
 

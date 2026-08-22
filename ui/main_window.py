@@ -30,14 +30,21 @@ class MainWindow(Adw.ApplicationWindow):
         # ---- Header Bar with Menu Button ----
         header = Adw.HeaderBar()
 
+        # --- Theme Section in Menu ---
+        theme_menu = Gio.Menu()
+        theme_menu.append("🌙  Dark Mode", "app.theme-dark")
+        theme_menu.append("☀  Light Mode", "app.theme-light")
+        theme_menu.append("🖥  System Default", "app.theme-system")
+
+        # --- Main Menu ---
         menu_model = Gio.Menu()
         menu_model.append("New Window", "app.new")
-        menu_model.append("Upload File/Folder to Proton…", "app.open")
         menu_model.append("Preferences", "app.settings")
+        menu_model.append_submenu("Appearance", theme_menu)
 
         help_menu = Gio.Menu()
         help_menu.append("Keyboard Shortcuts", "app.shortcuts")
-        help_menu.append("About My App", "app.about")
+        help_menu.append("About App", "app.about")
         help_menu.append("Quit", "app.quit")
         menu_model.append_submenu("Help", help_menu)
 
@@ -54,32 +61,13 @@ class MainWindow(Adw.ApplicationWindow):
         sidebar.set_vexpand(True)
         sidebar.add_css_class("navigation-sidebar")
 
-        # ---- sidebar - Selectable Buttons for users choice with proton cli commands ---
-        nav_items = [
-            ("Home", "home"),
-            ("Default Export", "upload"),
-            ("Default Download", "download"),
-            ("Custom Export", "uploader"),
-            ("Custom Import", "downloader"),
-            ("Custom Export: Documents", "dcsuploader"),
-            ("Custom Export: Downloads", "dnlduploader"),
-            ("Custom Export: Pictures", "pcsuploader"),
-            ("Custom Export: Videos", "viduploader"),
-            ("Custom Export: Music", "musuploader"),
-            ("Custom Import: Documents", "dcsdownloader"),
-            ("Custom Import: Downloads", "dnlddownloader"),
-            ("Custom Import: Pictures", "pcsdownloader"),
-            ("Custom Import: Videos", "viddownloader"),
-            ("Custom Import: Music", "musdownloader"),
-            ("Settings", "settings"),
-            ("About", "about"),
-        ]
-
+        # ---- Build all pages ----
         self.page_stack = Gtk.Stack()
         self.page_stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
         self.page_stack.set_hexpand(True)
 
-        # Add pages (FIXED: correct class names and parent_window)
+
+
         self.pages = {}
         self.pages["home"] = HomePage(on_navigate=self.navigate_to)
         self.pages["upload"] = UploadPage(on_navigate=self.navigate_to)
@@ -99,19 +87,18 @@ class MainWindow(Adw.ApplicationWindow):
         self.pages["settings"] = SettingsPage(on_navigate=self.navigate_to)
         self.pages["about"] = AboutPage(on_navigate=self.navigate_to)
 
-        for label, key in nav_items:
-            row = Gtk.Button(label=label)
-            row.set_has_frame(True)
-            row.set_halign(Gtk.Align.FILL)
-            row.connect("clicked", lambda b, k=key: self.navigate_to(k))
-            sidebar.append(row)
-
-            page_widget = self.pages[key].build(parent_window=self)  # ← FIXED
+        # page widgets
+        for key, page in self.pages.items():
+            page_widget = page.build(parent_window=self)
             self.page_stack.add_named(page_widget, key)
+
+        # ---- Sidebar with dropdown sections ----
+        sidebar = self._build_sidebar()
 
         # Sidebar in scrolled window
         scrolled_sidebar = Gtk.ScrolledWindow()
         scrolled_sidebar.set_child(sidebar)
+        scrolled_sidebar.set_size_request(220, -1)
         scrolled_sidebar.set_hexpand(False)
         scrolled_sidebar.set_vexpand(True)
         scrolled_sidebar.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
@@ -130,6 +117,69 @@ class MainWindow(Adw.ApplicationWindow):
         self.set_content(outer)
         self.navigate_to("home")
 
+    def _build_sidebar(self):
+        """sidebar with flat items and expandable dropdown groups."""
+        container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+        container.add_css_class("navigation-sidebar")
+
+        # --- Top-level flat items ---
+        for label, key in [("🏠  Home", "home")]:
+            container.append(self._make_nav_button(label, key))
+
+        # --- Expandable groups ---
+        groups = [
+            ("⬆  Upload to Proton", [
+                ("Fixed: Export", "upload"),
+                ("Custom Fixed: Export", "uploader"),
+                ("Custom Export: Documents", "dcsuploader"),
+                ("Custom Export: Downloads", "dnlduploader"),
+                ("Custom Export: Pictures", "pcsuploader"),
+                ("Custom Export: Videos", "viduploader"),
+                ("Custom Export: Music", "musuploader"),
+            ]),
+            ("⬇  Download from Proton", [
+                ("Fixed: Import", "download"),
+                ("Custom Fixed: Import", "downloader"),
+                ("Custom Import: Documents", "dcsdownloader"),
+                ("Custom Import: Downloads", "dnlddownloader"),
+                ("Custom Import: Pictures", "pcsdownloader"),
+                ("Custom Import: Videos", "viddownloader"),
+                ("Custom Import: Music", "musdownloader"),
+            ]),
+        ]
+
+        for group_label, items in groups:
+            expander = Gtk.Expander(label=group_label)
+            expander.set_expanded(True)
+            expander.add_css_class("sidebar-group")
+
+            inner_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+            inner_box.set_margin_start(12)
+
+            for sub_label, sub_key in items:
+                btn = self._make_nav_button(sub_label, sub_key, indent=True)
+                inner_box.append(btn)
+
+            expander.set_child(inner_box)
+            container.append(expander)
+
+        # --- Bottom flat items ---
+        for label, key in [("⚙  Options", "settings"), ("ℹ  About", "about")]:
+            container.append(self._make_nav_button(label, key))
+
+        return container
+
+    def _make_nav_button(self, label, page_key, indent=False):
+        """Create a single navigation button."""
+        btn = Gtk.Button(label=label)
+        btn.set_has_frame(False)
+        btn.set_halign(Gtk.Align.FILL)
+        if indent:
+            btn.set_margin_start(12)
+        btn.connect("clicked", lambda b, k=page_key: self.navigate_to(k))
+        return btn
+
     def navigate_to(self, page_key):
         """Switch the visible page."""
         self.page_stack.set_visible_child_name(page_key)
+

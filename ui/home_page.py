@@ -41,7 +41,7 @@ class HomePage:
         # --- Button: Open a URL ---
         btn_url = Gtk.Button(label="* Github Page")
         btn_url.set_size_request(400, -1)
-        btn_url.connect("clicked", lambda *_: webbrowser.open("https://github.com/CyberCrime-Stoppers/proton-drive-utilities"))
+        btn_url.connect("clicked", lambda *_: webbrowser.open("https://github.com/CyberCrime-Stoppers/"))
         container.append(btn_url)
 
         return container

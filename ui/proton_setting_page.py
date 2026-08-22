@@ -86,7 +86,7 @@ class SettingsPage:
         # --- Layout ---
         container = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
-            spacing=20,
+            spacing=15,
             margin_top=20,
             margin_bottom=20,
             margin_start=20,

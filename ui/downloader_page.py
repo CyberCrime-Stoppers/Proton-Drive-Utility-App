@@ -47,8 +47,8 @@ class DownloaderPage:
         remote_label.set_margin_top(20)
         container.append(remote_label)
         self.entry_remote = Gtk.Entry()
-        self.entry_remote.set_placeholder_text("/my-files/")
-        self.entry_remote.set_text("/my-files/")
+        self.entry_remote.set_placeholder_text("/my-files/Downloads")
+        self.entry_remote.set_text("/my-files/Downloads")
         self.entry_remote.set_size_request(400, -1)
         container.append(self.entry_remote)
 
@@ -62,8 +62,8 @@ class DownloaderPage:
         local_box.set_size_request(400, -1)
 
         self.entry_local = Gtk.Entry()
-        self.entry_local.set_placeholder_text("~/Downloads")
-        self.entry_local.set_text(os.path.expanduser("~/Downloads"))
+        self.entry_local.set_placeholder_text("Click Browse: to download a file from Proton Drive default directory")
+        self.entry_local.set_text(os.path.expanduser("Click Browse: to download a file from Proton Drive default directory"))
         self.entry_local.set_hexpand(True)
         local_box.append(self.entry_local)
 
