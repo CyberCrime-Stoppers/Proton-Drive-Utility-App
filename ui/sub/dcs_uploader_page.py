@@ -52,7 +52,7 @@ class DcsUploaderPage:
 
         self.entry_local = Gtk.Entry()
         self.entry_local.set_placeholder_text("/")
-        self.entry_local.set_text(os.path.expanduser("Click browse to choose a path to Upload"))
+        self.entry_local.set_text(os.path.expanduser("Click browse to choose a path to Upload into your proton drive"))
         self.entry_local.set_hexpand(True)
         local_box.append(self.entry_local)
 
