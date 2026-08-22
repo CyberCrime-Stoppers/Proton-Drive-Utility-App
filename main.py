@@ -11,7 +11,7 @@ import threading
 from ui.main_window import MainWindow
 
 
-class MyApp(Adw.Application):
+class PDUA(Adw.Application):
     def __init__(self):
         super().__init__(application_id="com.drive.proton.me")
 
@@ -26,6 +26,9 @@ class MyApp(Adw.Application):
             ("settings",  self._on_settings),
             ("about",     self._on_about),
             ("shortcuts", self._on_shortcuts),
+            ("theme-dark",   self._on_theme_dark),
+            ("theme-light",  self._on_theme_light),
+            ("theme-system", self._on_theme_system),
         ]
         for name, callback in actions:
             action = Gio.SimpleAction.new(name, None)
@@ -37,7 +40,6 @@ class MyApp(Adw.Application):
 
         app_section = Gio.Menu()
         app_section.append("New Window", "app.new")
-        app_section.append("Open File…", "app.open")
         app_section.append("Preferences", "app.settings")
         menu.append_submenu("Application", app_section)
 
@@ -46,7 +48,7 @@ class MyApp(Adw.Application):
         menu.append_submenu("Shortcuts", shortcuts_section)
 
         help_section = Gio.Menu()
-        help_section.append("About My App", "app.about")
+        help_section.append("About App", "app.about")
         help_section.append("Quit", "app.quit")
         menu.append_submenu("Help", help_section)
 
@@ -62,6 +64,21 @@ class MyApp(Adw.Application):
         if not win:
             win = MainWindow(application=self)
         win.present()
+
+
+    # ----  dark and light user preference options ---
+
+    def _on_theme_dark(self, action, param):
+        Adw.StyleManager.get_default().set_color_scheme(Adw.ColorScheme.FORCE_DARK)
+        print("[Theme] Dark mode")
+
+    def _on_theme_light(self, action, param):
+        Adw.StyleManager.get_default().set_color_scheme(Adw.ColorScheme.FORCE_LIGHT)
+        print("[Theme] Light mode")
+
+    def _on_theme_system(self, action, param):
+        Adw.StyleManager.get_default().set_color_scheme(Adw.ColorScheme.DEFAULT)
+        print("[Theme] System default")
 
     # ---- Action Callbacks ----
 
@@ -190,7 +207,7 @@ class MyApp(Adw.Application):
 
 
 def main():
-    app = MyApp()
+    app = PDUA()
     app.run(sys.argv)
 
 
