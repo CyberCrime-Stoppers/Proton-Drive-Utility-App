@@ -30,14 +30,20 @@ class MainWindow(Adw.ApplicationWindow):
         # ---- Header Bar with Menu Button ----
         header = Adw.HeaderBar()
 
-        # --- Theme Section in Menu ---
+         # --- Theme submenu ---
         theme_menu = Gio.Menu()
         theme_menu.append("🌙  Dark Mode", "app.theme-dark")
         theme_menu.append("☀  Light Mode", "app.theme-light")
         theme_menu.append("🖥  System Default", "app.theme-system")
 
-        # --- Main Menu ---
+
+        # --- Main menu with Login at top ---
         menu_model = Gio.Menu()
+
+        login_section = Gio.Menu()
+        login_section.append("🔐  Login or Logout…", "app.login")
+
+        menu_model.append_section(None, login_section)
         menu_model.append("New Window", "app.new")
         menu_model.append("Preferences", "app.settings")
         menu_model.append_submenu("Appearance", theme_menu)
@@ -182,4 +188,75 @@ class MainWindow(Adw.ApplicationWindow):
     def navigate_to(self, page_key):
         """Switch the visible page."""
         self.page_stack.set_visible_child_name(page_key)
+
+    # ===== LOGIN (dropdown menu action → popup window) =====
+
+    def _on_login(self, action, param):
+        """Open the login popup window from the hamburger menu."""
+        from ui.login_window import LoginWindow
+
+        login_win = LoginWindow(self, on_success=self._on_login_success)
+        login_win.present()
+
+    def _on_login_success(self):
+        """Called when the login popup reports success."""
+        self.navigate_to("home")
+        toast = Adw.Toast(title="✓ Logged in to Proton Drive")
+        self.add_toast(toast)
+
+    # ===== AUTH GATE =====
+
+    def _check_auth_and_navigate(self):
+        """Check CLI auth status on startup, navigate accordingly."""
+        cli = self._find_proton_drive_cli()
+
+        if not cli:
+            print("[PDUA] proton-drive CLI not found")
+            self.navigate_to("home")
+            toast = Adw.Toast(
+                title="⚠ proton-drive CLI not found — click menu → Login to set up"
+            )
+            toast.set_timeout(0)  # persistent until dismissed
+            self.add_toast(toast)
+            return
+
+        t = threading.Thread(target=self._do_auth_check, args=(cli,), daemon=True)
+        t.start()
+
+    def _find_proton_drive_cli(self):
+        candidates = [
+            "/usr/bin/proton-drive",
+            "/usr/local/bin/proton-drive",
+            os.path.expanduser("~/.local/bin/proton-drive"),
+        ]
+        for path in candidates:
+            if os.path.isfile(path) and os.access(path, os.X_OK):
+                return path
+        found = shutil.which("proton-drive")
+        return found if found else None
+
+    def _do_auth_check(self, cli):
+        try:
+            result = subprocess.run(
+                [cli, "auth", "status"],
+                capture_output=True, text=True, timeout=10
+            )
+            if result.returncode == 0:
+                GLib.idle_add(self.navigate_to, "home")
+            else:
+                GLib.idle_add(self._show_login_toast)
+        except Exception as e:
+            print(f"[PDUA] Auth check error: {e}")
+            GLib.idle_add(self.navigate_to, "home")
+
+    def _show_login_toast(self):
+        """Show a toast telling the user to log in."""
+        self.navigate_to("home")
+        toast = Adw.Toast(
+            title="Not logged in — click menu → Login to Proton Drive"
+        )
+        toast.set_timeout(0)
+        toast.set_button_label("Login")
+        toast.connect("button-clicked", lambda t: self._on_login(None, None))
+        self.add_toast(toast)
 
