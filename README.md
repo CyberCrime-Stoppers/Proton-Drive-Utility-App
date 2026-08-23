@@ -95,11 +95,11 @@ give-me-ideas@mailservices2.simplelogin.com
  
  - Custom fixed documents - uploads page and download page
  >
-<img src="screenshot/v126/custom_fixed_uploader.png" width="360" height="360" alt="Logo">
-<img src="screenshot/v126/custom_fixed_downloader.png" width="360" height="360" alt="Logo">
+<img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="Logo">
  
  - Custom documents - uploads page and downloads page
  >
-<img src="screenshot/v126/custom_upload_documents.png" width="250" height="250" alt="Logo">
-<img src="screenshot/v126/custom_download_documents.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="Logo">
 
