@@ -7,7 +7,7 @@ gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw, Gio, GLib
 import subprocess
 import threading
-
+import logging
 from ui.main_window import MainWindow
 
 
@@ -36,6 +36,7 @@ class PDUA(Adw.Application):
             self.add_action(action)
 
         # ---- Build the Menu Model ----
+
         menu = Gio.Menu()
 
         app_section = Gio.Menu()
@@ -186,22 +187,9 @@ class PDUA(Adw.Application):
             msg = "✗ Upload timed out (>10 min)"
             print(msg)
 
-        except FileNotFoundError:
-            msg = ("✗ proton-drive CLI not found.\n"
-                   "Download: https://proton.me/drive/download\n"
-                   "Make executable: chmod +x proton-drive\n"
-                   "Login once: ./proton-drive auth login")
-            print(msg)
-
         except Exception as e:
             msg = f"✗ Unexpected error: {e}"
             print(msg)
-
-        # Show result toast on main thread
-        def show_result():
-            win = self.props.active_window
-            if win and hasattr(win, "add_toast"):
-                win.add_toast(Adw.Toast(title=msg, timeout=5))
 
         GLib.idle_add(show_result)
 
