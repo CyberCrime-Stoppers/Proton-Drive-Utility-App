@@ -90,14 +90,13 @@ give-me-ideas@mailservices2.simplelogin.com
 #### Sneak Peak on what the app functions in the Graphical User Interface
 - About page
 <img src="screenshot/v126/about_page.png" width="400" height="400" alt="Logo">
-## Custom Fixed directory Uploads and Downloads from/to your proton drive and linux system.
-- Custom fixed documents - uploads page
+### Custom Fixed directory Uploads and Downloads from/to your proton drive and linux system.
+- Custom fixed documents - uploads page and download page
 <img src="screenshot/v126/custom_fixed_uploader.png" width="250" height="250" alt="Logo">
-- Custom fixed documents - download page
 <img src="screenshot/v126/custom_fixed_downloader.png" width="250" height="250" alt="Logo">
-## Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system.
-- Custom documents - uploads page
+## Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system. 
+
+- Custom documents - uploads page and downloads page
 <img src="screenshot/v126/custom_upload_documents.png" width="250" height="250" alt="Logo">
-- Custom documents - downloads page
 <img src="screenshot/v126/custom_download_documents.png" width="250" height="250" alt="Logo">
 
