@@ -74,31 +74,30 @@ If you'd like to suggest ideas on what to add—anything helps make this app bet
 <!-- Add your email here -->
 give-me-ideas@mailservices2.simplelogin.com
 
-## Screenshots of the App
+## Screenshots of the App small features and Accessbilities
 
- 
- - About page
+<img src="screenshot/v127/dropdown_menu.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v127/dropdown_menu_appearances.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v127/dropdown_menu_help.png" width="250" height="250" alt="Logo">
 
+ - Login and Logout UI popup
+ -  Yes now you can log in and out with this GUI app.
+<img src="screenshot/v127/auth_window.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v127/auth_window_login.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v127/auth_window_logout.png" width="250" height="250" alt="Logo">
+
+
+#### Sneak Peak on what the app functions in the Graphical User Interface
+- About page
 <img src="screenshot/v126/about_page.png" width="400" height="400" alt="Logo">
-
-
 ## Custom Fixed directory Uploads and Downloads from/to your proton drive and linux system.
-
-  
-  - Custom fixed documents - uploads page
-<img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="Logo">
-
- 
-  - Custom fixed documents - download page
-<img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="Logo">
-
+- Custom fixed documents - uploads page
+<img src="screenshot/v126/custom_fixed_uploader.png" width="250" height="250" alt="Logo">
+- Custom fixed documents - download page
+<img src="screenshot/v126/custom_fixed_downloader.png" width="250" height="250" alt="Logo">
 ## Custom: choose your directory Uploads and Downloads page from/to your proton drive and linux system.
-
- 
- - Custom documents - uploads page
-<img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="Logo">
-
- 
- - Custom documents - downloads page
-<img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="Logo">
+- Custom documents - uploads page
+<img src="screenshot/v126/custom_upload_documents.png" width="250" height="250" alt="Logo">
+- Custom documents - downloads page
+<img src="screenshot/v126/custom_download_documents.png" width="250" height="250" alt="Logo">
 
