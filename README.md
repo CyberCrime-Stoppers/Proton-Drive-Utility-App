@@ -45,10 +45,9 @@ If you want to stay safe and receive trusted updates, please download only from 
 
 ---
 
-## ⚠️ Important Note
+## ✅ Yes, you can now login within the App
 
-You can now login within the app Released Version and Date v1.2.7 - 08/23/2026. [MM/DD/YYYY]
-> _Note: This option may be implemented in the future._
+You can now login within the app - Released Version and Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY]
 
 ---
 
