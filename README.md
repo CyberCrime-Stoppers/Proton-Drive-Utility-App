@@ -88,12 +88,18 @@ give-me-ideas@mailservices2.simplelogin.com
 
 
 #### Sneak Peak on what the app functions in the Graphical User Interface
-- About page
+ 
+ - About page
+ >
 <img src="screenshot/v126/about_page.png" width="400" height="400" alt="Logo">
-- Custom fixed documents - uploads page and download page
+ 
+ - Custom fixed documents - uploads page and download page
+ >
 <img src="screenshot/v126/custom_fixed_uploader.png" width="250" height="250" alt="Logo">
 <img src="screenshot/v126/custom_fixed_downloader.png" width="250" height="250" alt="Logo">
-- Custom documents - uploads page and downloads page
+ 
+ - Custom documents - uploads page and downloads page
+ >
 <img src="screenshot/v126/custom_upload_documents.png" width="250" height="250" alt="Logo">
 <img src="screenshot/v126/custom_download_documents.png" width="250" height="250" alt="Logo">
 
