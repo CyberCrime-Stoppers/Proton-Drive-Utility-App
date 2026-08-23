@@ -47,10 +47,7 @@ If you want to stay safe and receive trusted updates, please download only from 
 
 ## ⚠️ Important Note
 
-You **cannot** log in to your Proton AG account using this app. You must use the native Proton Drive client that Proton AG has built for their customers, which you can find here:
-
-> 🔗 https://proton.me/blog/proton-drive-cli
-
+You can now login within the app Released Version and Date v1.2.7 - 08/23/2026. [MM/DD/YYYY]
 > _Note: This option may be implemented in the future._
 
 ---
