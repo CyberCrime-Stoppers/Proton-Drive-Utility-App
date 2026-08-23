@@ -76,7 +76,7 @@ give-me-ideas@mailservices2.simplelogin.com
 
 ## Screenshots of the App small features and Accessbilities
 
-<img src="screenshot/v127/dropdown_menu.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v127/dropdown_menubar.png" width="250" height="250" alt="Logo">
 <img src="screenshot/v127/dropdown_menu_appearances.png" width="250" height="250" alt="Logo">
 <img src="screenshot/v127/dropdown_menu_help.png" width="250" height="250" alt="Logo">
 
