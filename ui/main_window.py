@@ -1,22 +1,23 @@
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from ui.home_page import HomePage
-from ui.upload_page import UploadPage
-from ui.download_page import DownloadPage
-from ui.uploader_page import UploaderPage
-from ui.downloader_page import DownloaderPage
-from ui.sub.dcs_downloader_page import DcsDownloaderPage
-from ui.sub.dnld_downloader_page import DnldDownloaderPage
-from ui.sub.pcs_downloader_page import PcsDownloaderPage
-from ui.sub.vid_downloader_page import VidDownloaderPage
-from ui.sub.mus_downloader_page import MusDownloaderPage
-from ui.sub.dcs_uploader_page import DcsUploaderPage
-from ui.sub.dnld_uploader_page import DnldUploaderPage
-from ui.sub.pcs_uploader_page import PcsUploaderPage
-from ui.sub.vid_uploader_page import VidUploaderPage
-from ui.sub.mus_uploader_page import MusUploaderPage
-from ui.settings_page import SettingsPage
+from ui.function.home_page import HomePage
+from ui.function.config.proton_settings_page import ProtonSettingsPage
+from ui.tree.fixdo.upload_page import UploadPage
+from ui.tree.fixdo.download_page import DownloadPage
+from ui.tree.cusdo.uploader_page import UploaderPage
+from ui.tree.cusdo.downloader_page import DownloaderPage
+from ui.tree.down.doc_downloader_page import DocDownloaderPage
+from ui.tree.down.dwn_downloader_page import DwnDownloaderPage
+from ui.tree.down.pic_downloader_page import PicDownloaderPage
+from ui.tree.down.vid_downloader_page import VidDownloaderPage
+from ui.tree.down.mus_downloader_page import MusDownloaderPage
+from ui.tree.up.doc_uploader_page import DocUploaderPage
+from ui.tree.up.dwn_uploader_page import DwnUploaderPage
+from ui.tree.up.pic_uploader_page import PicUploaderPage
+from ui.tree.up.vid_uploader_page import VidUploaderPage
+from ui.tree.up.mus_uploader_page import MusUploaderPage
+from ui.function.config.settings_page import SettingsPage
 from ui.about_page import AboutPage
 from gi.repository import Gtk, Adw, Gio
 
@@ -76,18 +77,19 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.pages = {}
         self.pages["home"] = HomePage(on_navigate=self.navigate_to)
+        self.pages["protonsettingspage"] = ProtonSettingsPage(on_navigate=self.navigate_to)
         self.pages["upload"] = UploadPage(on_navigate=self.navigate_to)
         self.pages["download"] = DownloadPage(on_navigate=self.navigate_to)
         self.pages["uploader"] = UploaderPage(on_navigate=self.navigate_to)
         self.pages["downloader"] = DownloaderPage(on_navigate=self.navigate_to)
-        self.pages["dcsuploader"] = DcsUploaderPage(on_navigate=self.navigate_to)
-        self.pages["dnlduploader"] = DnldUploaderPage(on_navigate=self.navigate_to)
-        self.pages["pcsuploader"] = PcsUploaderPage(on_navigate=self.navigate_to)
+        self.pages["docuploader"] = DocUploaderPage(on_navigate=self.navigate_to)
+        self.pages["dwnuploader"] = DwnUploaderPage(on_navigate=self.navigate_to)
+        self.pages["picuploader"] = PicUploaderPage(on_navigate=self.navigate_to)
         self.pages["viduploader"] = VidUploaderPage(on_navigate=self.navigate_to)
         self.pages["musuploader"] = MusUploaderPage(on_navigate=self.navigate_to)
-        self.pages["dcsdownloader"] = DcsDownloaderPage(on_navigate=self.navigate_to)
-        self.pages["dnlddownloader"] = DnldDownloaderPage(on_navigate=self.navigate_to)
-        self.pages["pcsdownloader"] = PcsDownloaderPage(on_navigate=self.navigate_to)
+        self.pages["docdownloader"] = DocDownloaderPage(on_navigate=self.navigate_to)
+        self.pages["dwndownloader"] = DwnDownloaderPage(on_navigate=self.navigate_to)
+        self.pages["picdownloader"] = PicDownloaderPage(on_navigate=self.navigate_to)
         self.pages["viddownloader"] = VidDownloaderPage(on_navigate=self.navigate_to)
         self.pages["musdownloader"] = MusDownloaderPage(on_navigate=self.navigate_to)
         self.pages["settings"] = SettingsPage(on_navigate=self.navigate_to)
@@ -132,23 +134,29 @@ class MainWindow(Adw.ApplicationWindow):
         for label, key in [("🏠  Home", "home")]:
             container.append(self._make_nav_button(label, key))
 
+
+        # --- Proton-Settings-Page flat items ---
+        for label, key in [("🛡️  Proton Settings Page", "protonsettingspage")]:
+            container.append(self._make_nav_button(label, key))
+
+
         # --- Expandable groups ---
         groups = [
             ("⬆  Upload to Proton", [
                 ("Fixed: Export", "upload"),
-                ("Custom Fixed: Export", "uploader"),
-                ("Custom Export: Documents", "dcsuploader"),
-                ("Custom Export: Downloads", "dnlduploader"),
-                ("Custom Export: Pictures", "pcsuploader"),
+                ("Custom Export: Fixed Directory", "uploader"),
+                ("Custom Export: Documents", "docuploader"),
+                ("Custom Export: Downloads", "dwnuploader"),
+                ("Custom Export: Pictures", "picuploader"),
                 ("Custom Export: Videos", "viduploader"),
                 ("Custom Export: Music", "musuploader"),
             ]),
             ("⬇  Download from Proton", [
                 ("Fixed: Import", "download"),
-                ("Custom Fixed: Import", "downloader"),
-                ("Custom Import: Documents", "dcsdownloader"),
-                ("Custom Import: Downloads", "dnlddownloader"),
-                ("Custom Import: Pictures", "pcsdownloader"),
+                ("Custom Import: Fixed Directory", "downloader"),
+                ("Custom Import: Documents", "docdownloader"),
+                ("Custom Import: Downloads", "dwndownloader"),
+                ("Custom Import: Pictures", "picdownloader"),
                 ("Custom Import: Videos", "viddownloader"),
                 ("Custom Import: Music", "musdownloader"),
             ]),

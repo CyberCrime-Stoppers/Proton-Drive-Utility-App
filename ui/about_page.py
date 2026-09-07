@@ -24,7 +24,7 @@ class AboutPage:
         container.append(title)
 
         info = Gtk.Label(label=(
-           "\n ProtonDrive Utility App v1.2.6"
+           "\n ProtonDrive Utility App v1.2.8"
            "\n Release Date: 07/03/2026."
            "\n It's Unofficial."
            "\n Currently In: Beta."
