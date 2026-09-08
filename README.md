@@ -1,3 +1,5 @@
+<img src="applogo/pdua-rainbow.svg" width="150" height="150" alt="Logo">
+
 # Proton Drive Utility App 
 - Unofficial
 - Currently in: Beta.
