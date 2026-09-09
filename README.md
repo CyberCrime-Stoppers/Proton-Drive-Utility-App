@@ -31,7 +31,7 @@ of the many benefits listed above. ☝️
 Thank you, <strong> Proton AG </strong>. The community will love and experiment with proton cli, developing their own ways of using it and wanting more flexibility with Proton's services.
 
  - Home Page with authentication windowing.
-<img src="screenshot/v127/auth_window.png" width="600" height="600" alt="Logo">
+<img src="screenshot/v127/auth_window.png" width="600" height="600" alt="screenshots">
 
 ## Compatibility
 
@@ -72,31 +72,31 @@ give-me-ideas@mailservices2.simplelogin.com
 
 ## Screenshots of the App small features and Accessbilities
 
-<img src="screenshot/v127/dropdown_menubar.png" width="250" height="250" alt="Logo">
-<img src="screenshot/v127/dropdown_menu_appearances.png" width="250" height="250" alt="Logo">
-<img src="screenshot/v127/dropdown_menu_help.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v127/dropdown_menubar.png" width="250" height="250" alt="screenshots">
+<img src="screenshot/v127/dropdown_menu_appearances.png" width="250" height="250" alt="screenshots">
+<img src="screenshot/v127/dropdown_menu_help.png" width="250" height="250" alt="screenshots">
 
  - Login and Logout UI popup
  -  Yes now you can log in and out with this GUI app.
 <img src="screenshot/v127/auth_window.png" width="250" height="250" alt="Logo">
-<img src="screenshot/v127/auth_window_login.png" width="250" height="250" alt="Logo">
-<img src="screenshot/v127/auth_window_logout.png" width="250" height="250" alt="Logo">
+<img src="screenshot/v127/auth_window_login.png" width="250" height="250" alt="screenshots">
+<img src="screenshot/v127/auth_window_logout.png" width="250" height="250" alt="screenshots">
 
 
 #### Sneak Peak on what the app functions in the Graphical User Interface
  
  - About and Home Page
  >
-<img src="screenshot/v127/home_page.png" width="400" height="400" alt="Logo">
-<img src="screenshot/v126/about_page.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v127/home_page.png" width="400" height="400" alt="screenshots">
+<img src="screenshot/v126/about_page.png" width="400" height="400" alt="screenshots">
  
  - Custom fixed documents - uploads page and download page
  >
-<img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="Logo">
-<img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="screenshots">
+<img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="screenshots">
  
  - Custom documents - uploads page and downloads page
  >
-<img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="Logo">
-<img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="Logo">
+<img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="screenshots">
+<img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="screenshots">
 
