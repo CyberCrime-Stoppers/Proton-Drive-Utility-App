@@ -1,5 +1,7 @@
 <img src="applogo/pdua-rainbow-transparent-small-width.png" width="125" height="150" alt="Logo">
 
+_________________________________________________________
+
 # Proton Drive Utility App 
 - Unofficial
 - Currently in: Beta.
@@ -41,7 +43,7 @@ Future updates will roll out for this app, especially whenever Proton AG release
 
 ## 🔓 Open Source & Privacy
 
-Great news! This app is **open source**, and the source code is accessible and readable at any time—so you know nothing suspicious is running in the background. No telemetry, no data collection by the developer.
+<mark>Great news! This app is **open source**,</mark> it's free and it's is accessible and readable at any time—so you know nothing suspicious is running in the background. No telemetry, no data collection by the developer.
 
 If you want to stay safe and receive trusted updates, please download only from this GitHub page.
 
@@ -68,7 +70,7 @@ Thank you! If you'd like to buy me a coffee, you can support me anytime.
 If you'd like to suggest ideas on what to add—anything helps make this app better for all Linux users! You can always email me at:
 
 <!-- Add your email here -->
-give-me-ideas@mailservices2.simplelogin.com
+<mark>give-me-ideas@mailservices2.simplelogin.com</mark>
 
 ## Screenshots of the App small features and Accessbilities
 
