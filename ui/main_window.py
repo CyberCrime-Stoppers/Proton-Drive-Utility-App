@@ -1,6 +1,10 @@
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
+import os
+import shutil
+import subprocess
+import threading
 from ui.function.home_page import HomePage
 from ui.function.config.proton_settings_page import ProtonSettingsPage
 from ui.tree.fixdo.upload_page import UploadPage
@@ -19,7 +23,7 @@ from ui.tree.up.vid_uploader_page import VidUploaderPage
 from ui.tree.up.mus_uploader_page import MusUploaderPage
 from ui.function.config.settings_page import SettingsPage
 from ui.about_page import AboutPage
-from gi.repository import Gtk, Adw, Gio
+from gi.repository import Gtk, Adw, Gio, GLib
 
 
 class MainWindow(Adw.ApplicationWindow):
@@ -31,21 +35,20 @@ class MainWindow(Adw.ApplicationWindow):
         # ---- Header Bar with Menu Button ----
         header = Adw.HeaderBar()
 
-         # --- Theme submenu ---
+        # --- Theme submenu ---
         theme_menu = Gio.Menu()
         theme_menu.append("🌙  Dark Mode", "app.theme-dark")
         theme_menu.append("☀  Light Mode", "app.theme-light")
         theme_menu.append("🖥  System Default", "app.theme-system")
-
 
         # --- Main menu with Login at top ---
         menu_model = Gio.Menu()
 
         login_section = Gio.Menu()
         login_section.append("🔐  Login or Logout…", "app.login")
-
         menu_model.append_section(None, login_section)
         menu_model.append("New Window", "app.new")
+        menu_model.append("📸 Albums", "app.albums")
         menu_model.append("Preferences", "app.settings")
         menu_model.append_submenu("Appearance", theme_menu)
 
@@ -61,19 +64,11 @@ class MainWindow(Adw.ApplicationWindow):
         menu_button.set_primary(True)
         header.pack_end(menu_button)
 
-        # ---- Sidebar layout ----
-        sidebar = Gtk.ListBox()
-        sidebar.set_size_request(200, -1)
-        sidebar.set_hexpand(False)
-        sidebar.set_vexpand(True)
-        sidebar.add_css_class("navigation-sidebar")
-
-        # ---- Build all pages ----
+        # ---- Page stack ----
         self.page_stack = Gtk.Stack()
         self.page_stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
         self.page_stack.set_hexpand(True)
-
-
+        self.page_stack.set_vexpand(True)
 
         self.pages = {}
         self.pages["home"] = HomePage(on_navigate=self.navigate_to)
@@ -95,15 +90,13 @@ class MainWindow(Adw.ApplicationWindow):
         self.pages["settings"] = SettingsPage(on_navigate=self.navigate_to)
         self.pages["about"] = AboutPage(on_navigate=self.navigate_to)
 
-        # page widgets
         for key, page in self.pages.items():
             page_widget = page.build(parent_window=self)
             self.page_stack.add_named(page_widget, key)
 
-        # ---- Sidebar with dropdown sections ----
+        # ---- Sidebar ----
         sidebar = self._build_sidebar()
 
-        # Sidebar in scrolled window
         scrolled_sidebar = Gtk.ScrolledWindow()
         scrolled_sidebar.set_child(sidebar)
         scrolled_sidebar.set_size_request(220, -1)
@@ -122,23 +115,31 @@ class MainWindow(Adw.ApplicationWindow):
         outer.append(header)
         outer.append(box)
 
-        self.set_content(outer)
+        # ---- Toast overlay: wraps everything so add_toast() works ----
+        self._toast_overlay = Adw.ToastOverlay()
+        self._toast_overlay.set_child(outer)
+        self.set_content(self._toast_overlay)
+
         self.navigate_to("home")
 
+        # ---- Auth gate on startup ----
+        self._check_auth_and_navigate()
+
+    def add_toast(self, toast):
+        """Public helper so pages can call parent_window.add_toast()."""
+        self._toast_overlay.add_toast(toast)
+
     def _build_sidebar(self):
-        """sidebar with flat items and expandable dropdown groups."""
+        """Sidebar with flat items and expandable dropdown groups."""
         container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         container.add_css_class("navigation-sidebar")
 
         # --- Top-level flat items ---
-        for label, key in [("🏠  Home", "home")]:
+        for label, key in [
+            ("🏠  Home", "home"),
+            ("🛡️  Proton Settings Page", "protonsettingspage"),
+        ]:
             container.append(self._make_nav_button(label, key))
-
-
-        # --- Proton-Settings-Page flat items ---
-        for label, key in [("🛡️  Proton Settings Page", "protonsettingspage")]:
-            container.append(self._make_nav_button(label, key))
-
 
         # --- Expandable groups ---
         groups = [
@@ -171,8 +172,7 @@ class MainWindow(Adw.ApplicationWindow):
             inner_box.set_margin_start(12)
 
             for sub_label, sub_key in items:
-                btn = self._make_nav_button(sub_label, sub_key, indent=True)
-                inner_box.append(btn)
+                inner_box.append(self._make_nav_button(sub_label, sub_key, indent=True))
 
             expander.set_child(inner_box)
             container.append(expander)
@@ -197,30 +197,28 @@ class MainWindow(Adw.ApplicationWindow):
         """Switch the visible page."""
         self.page_stack.set_visible_child_name(page_key)
 
-    # ===== LOGIN (dropdown menu action → popup window) =====
+    # ===== LOGIN (called from app action + login toast) =====
 
-    def _on_login(self, action, param):
-        """Open the login popup window from the hamburger menu."""
-        from ui.login_window import LoginWindow
+    def open_login_window(self):
+        """Open the login popup window (shared entry point)."""
+        from ui.function.pup.auth_window import AuthWindow
 
-        login_win = LoginWindow(self, on_success=self._on_login_success)
-        login_win.present()
+        auth_win = AuthWindow(self, on_success=self._on_login_success)
+        auth_win.present()
 
     def _on_login_success(self):
         """Called when the login popup reports success."""
         self.navigate_to("home")
-        toast = Adw.Toast(title="✓ Logged in to Proton Drive")
-        self.add_toast(toast)
+        self.add_toast(Adw.Toast(title="✓ Logged in to Proton Drive"))
 
     # ===== AUTH GATE =====
 
     def _check_auth_and_navigate(self):
-        """Check CLI auth status on startup, navigate accordingly."""
+        """Check CLI auth status on startup, notify if not logged in."""
         cli = self._find_proton_drive_cli()
 
         if not cli:
             print("[PDUA] proton-drive CLI not found")
-            self.navigate_to("home")
             toast = Adw.Toast(
                 title="⚠ proton-drive CLI not found — click menu → Login to set up"
             )
@@ -228,10 +226,12 @@ class MainWindow(Adw.ApplicationWindow):
             self.add_toast(toast)
             return
 
-        t = threading.Thread(target=self._do_auth_check, args=(cli,), daemon=True)
-        t.start()
+        threading.Thread(
+            target=self._do_auth_check, args=(cli,), daemon=True
+        ).start()
 
     def _find_proton_drive_cli(self):
+        """Locate the proton-drive CLI binary."""
         candidates = [
             "/usr/bin/proton-drive",
             "/usr/local/bin/proton-drive",
@@ -240,8 +240,7 @@ class MainWindow(Adw.ApplicationWindow):
         for path in candidates:
             if os.path.isfile(path) and os.access(path, os.X_OK):
                 return path
-        found = shutil.which("proton-drive")
-        return found if found else None
+        return shutil.which("proton-drive")
 
     def _do_auth_check(self, cli):
         try:
@@ -249,22 +248,17 @@ class MainWindow(Adw.ApplicationWindow):
                 [cli, "auth", "status"],
                 capture_output=True, text=True, timeout=10
             )
-            if result.returncode == 0:
-                GLib.idle_add(self.navigate_to, "home")
-            else:
+            if result.returncode != 0:
                 GLib.idle_add(self._show_login_toast)
         except Exception as e:
             print(f"[PDUA] Auth check error: {e}")
-            GLib.idle_add(self.navigate_to, "home")
 
     def _show_login_toast(self):
-        """Show a toast telling the user to log in."""
-        self.navigate_to("home")
+        """Persistent toast prompting login, with a Login button."""
         toast = Adw.Toast(
-            title="Not logged in — click menu → Login to Proton Drive"
+            title="Not logged in — click Login to connect to Proton Drive"
         )
         toast.set_timeout(0)
         toast.set_button_label("Login")
-        toast.connect("button-clicked", lambda t: self._on_login(None, None))
+        toast.connect("button-clicked", lambda t: self.open_login_window())
         self.add_toast(toast)
-
