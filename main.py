@@ -4,7 +4,7 @@ import os
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, GLib
+from gi.repository import Gtk, Adw, Gio, GLib, GObject
 from ui.main_window import MainWindow
 
 class PDUA(Adw.Application):
@@ -17,15 +17,16 @@ class PDUA(Adw.Application):
         # ---- Register Actions ----
         actions = [
             ("new",           self._on_new),
+            ("albums",        self._on_albums),
             ("open",          self._on_open),
             ("quit",          self._on_quit),
             ("settings",      self._on_settings),
             ("about",         self._on_about),
             ("shortcuts",     self._on_shortcuts),
-            ("login",         self._on_auth),           # NEW
-            ("theme-dark",    self._on_theme_dark),      # NEW
-            ("theme-light",   self._on_theme_light),     # NEW
-            ("theme-system",  self._on_theme_system),    # NEW
+            ("login",         self._on_auth),
+            ("theme-dark",    self._on_theme_dark),
+            ("theme-light",   self._on_theme_light),
+            ("theme-system",  self._on_theme_system),
         ]
         for name, callback in actions:
             action = Gio.SimpleAction.new(name, None)
@@ -35,18 +36,17 @@ class PDUA(Adw.Application):
         # ---- Build the Menu Model ----
         menu = Gio.Menu()
 
-        # Login at the very top
         login_section = Gio.Menu()
         login_section.append("🔐  Login to Proton Drive…", "app.login")
         menu.append_section(None, login_section)
 
         app_section = Gio.Menu()
         app_section.append("New Window", "app.new")
+        app_section.append("📸 Albums", "app.albums")
         app_section.append("Open File…", "app.open")
         app_section.append("Preferences", "app.settings")
         menu.append_submenu("Application", app_section)
 
-        # Theme submenu
         theme_menu = Gio.Menu()
         theme_menu.append("🌙  Dark Mode", "app.theme-dark")
         theme_menu.append("☀  Light Mode", "app.theme-light")
@@ -67,9 +67,10 @@ class PDUA(Adw.Application):
         # Keyboard shortcuts
         self.set_accels_for_action("app.quit", ["<Ctrl>Q"])
         self.set_accels_for_action("app.new", ["<Ctrl>N"])
+        self.set_accels_for_action("app.albums", ["<Ctrl>A"])
         self.set_accels_for_action("app.open", ["<Ctrl>O"])
         self.set_accels_for_action("app.settings", ["<Ctrl>comma"])
-        self.set_accels_for_action("app.login", ["<Ctrl>L"])   # NEW
+        self.set_accels_for_action("app.login", ["<Ctrl>L"])
 
     def do_activate(self):
         win = self.props.active_window
@@ -94,7 +95,6 @@ class PDUA(Adw.Application):
 
             def on_file_selected(window, filepath):
                 print(f"[Main] Got file from browser: {filepath}")
-                self._handle_selected_file(filepath)
 
             browser.connect("file-selected", on_file_selected)
             browser.present()
@@ -118,7 +118,28 @@ class PDUA(Adw.Application):
         print("[Menu] Quit triggered")
         self.quit()
 
-    # ---- NEW: Login Action ----
+    # ---- Albums ----
+
+    def _on_albums(self, action, param):
+        print("[Menu] Albums triggered")
+        from ui.function.pup.remote.albums_window import AlbumsWindow
+
+        win = self.props.active_window
+        if not win:
+            return
+
+        # Prefer the CLI found by the window itself, else settings, else PATH
+        cli = "proton-drive"
+        finder = getattr(win, "_find_proton_drive_cli", None)
+        if finder:
+            cli = finder() or cli
+
+        albums_win = AlbumsWindow(win, cli_binary=cli)
+        albums_win.connect("album-opened",
+                           lambda w, name: print(f"[Main] Album opened: {name}"))
+        albums_win.present()
+
+    # ---- Login ----
 
     def _on_auth(self, action, param):
         """Open the login popup window from the dropdown menu."""
@@ -130,7 +151,7 @@ class PDUA(Adw.Application):
             auth_win = AuthWindow(parent, on_success=parent._on_login_success)
             auth_win.present()
 
-    # ---- NEW: Theme Actions ----
+    # ---- Theme ----
 
     def _on_theme_dark(self, action, param):
         Adw.StyleManager.get_default().set_color_scheme(
@@ -146,18 +167,6 @@ class PDUA(Adw.Application):
         Adw.StyleManager.get_default().set_color_scheme(
             Adw.ColorScheme.DEFAULT
         )
-
-    # ===== FILE HANDLING =====
-
-    def _handle_selected_file(self, filepath):
-        print(f"[Processing] Received file: {filepath}")
-
-        if os.path.isfile(filepath):
-            print(f"✓ Valid file detected: {filepath}")
-        elif os.path.isdir(filepath):
-            print(f"ℹ Directory selected: {filepath}")
-        else:
-            print(f"✗ Invalid path: {filepath}")
 
 
 def main():
