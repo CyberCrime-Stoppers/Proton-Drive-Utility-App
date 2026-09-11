@@ -6,7 +6,7 @@ _________________________________________________________
 - Unofficial
 - Currently in: Beta.
 - Released Date: 07/03/2026. [MM/DD/YYYY]
-- App version: v1.2.7 - updated: 08/23/2026. [MM/DD/YYYY]
+- App version: v1.2.9 - updated: 09/10/2026. [MM/DD/YYYY]
 - Language: Python + GTK4 + Libadwaita.
 - Opened Sourced & Publicly Available.
 
