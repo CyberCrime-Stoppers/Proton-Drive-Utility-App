@@ -11,7 +11,8 @@ _________________________________________________________
 - Opened Sourced & Publicly Available.
 
 _________________________________________________________
-## ✅ Yes, you can now View Photos/Albums within the App (Still Limited Experience for now)
+## ✅ Yes, you can now View Photos/Albums within the App 
+> <mark>(Still Limited Experience for now until further updates and improvements)</mark>
 <strong>You Can say now we have a Proton Drive Photo/Album Management. Without the need to manage out Photos/Albums in Web Browser</strong>
 ##### Albums first look.
 ##### It's just getting started.
