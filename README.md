@@ -13,6 +13,8 @@ _________________________________________________________
 _________________________________________________________
 ## ✅ Yes, you can now View Photos/Albums within the App (Still Limited Experience for now)
 <strong>You Can say now we have a Proton Drive Photo/Album Management. Without the need to manage out Photos/Albums in Web Browser</strong>
+> Albums first look.
+> - It's just getting started.
 <img src="screenshot/v1210/Albums-Loading.png" width="250" height="250" alt="ProtonDrive-Albums">
 <img src="screenshot/v1210/albums-shown-total-and-icons.png" width="250" height="250" alt="ProtonDrive-Albums">
 <img src="screenshot/v1210/Albums-Options.png" width="250" height="250" alt="ProtonDrive-Albums">
