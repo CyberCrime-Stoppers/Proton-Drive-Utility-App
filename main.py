@@ -11,6 +11,16 @@ class PDUA(Adw.Application):
     def __init__(self):
         super().__init__(application_id="com.unixinbox.pdua")
 
+
+    ICON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "icons")
+
+    def _register_icons(self):
+        """Load custom album icons from assets/icons."""
+        if os.path.isdir(ICON_DIR):
+            display = Gdk.Display.get_default()
+            theme = Gtk.IconTheme.get_for_display(display)
+            theme.add_search_path(ICON_DIR)
+
     def do_startup(self):
         Adw.Application.do_startup(self)
 
