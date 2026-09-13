@@ -16,10 +16,9 @@ _________________________________________________________
 ##### Albums first look.
 ##### It's just getting started.
 <br>
-<br>
-<img src="screenshot/v1210/Albums-Loading.png" width="250" height="250" alt="ProtonDrive-Albums">
-<img src="screenshot/v1210/albums-shown-total-and-icons.png" width="250" height="250" alt="ProtonDrive-Albums">
-<img src="screenshot/v1210/Albums-Options.png" width="250" height="250" alt="ProtonDrive-Albums">
+<img src="screenshot/v1210/Albums-Loading.png" width="300" height="300" alt="ProtonDrive-Albums">
+<img src="screenshot/v1210/albums-shown-total-and-icons.png" width="300" height="300" alt="ProtonDrive-Albums">
+<img src="screenshot/v1210/Albums-Options.png" width="300" height="300" alt="ProtonDrive-Albums">
 
 
 ## 🌟 Lists of benefits on why This App exists and use cases.
