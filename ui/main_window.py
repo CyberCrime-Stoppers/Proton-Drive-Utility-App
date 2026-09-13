@@ -7,6 +7,7 @@ import subprocess
 import threading
 from ui.function.home_page import HomePage
 from ui.function.config.proton_settings_page import ProtonSettingsPage
+from ui.function.pup.remote.album_explorer_page import AlbumExplorerPage
 from ui.tree.fixdo.upload_page import UploadPage
 from ui.tree.fixdo.download_page import DownloadPage
 from ui.tree.cusdo.uploader_page import UploaderPage
@@ -43,12 +44,11 @@ class MainWindow(Adw.ApplicationWindow):
 
         # --- Main menu with Login at top ---
         menu_model = Gio.Menu()
-
         login_section = Gio.Menu()
         login_section.append("🔐  Login or Logout…", "app.login")
         menu_model.append_section(None, login_section)
         menu_model.append("New Window", "app.new")
-        menu_model.append("📸 Albums", "app.albums")
+        # menu_model.append("📸 Albums", "app.albums")
         menu_model.append("Preferences", "app.settings")
         menu_model.append_submenu("Appearance", theme_menu)
 
@@ -73,6 +73,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.pages = {}
         self.pages["home"] = HomePage(on_navigate=self.navigate_to)
         self.pages["protonsettingspage"] = ProtonSettingsPage(on_navigate=self.navigate_to)
+        self.pages["albums"] = AlbumExplorerPage(on_navigate=self.navigate_to)
         self.pages["upload"] = UploadPage(on_navigate=self.navigate_to)
         self.pages["download"] = DownloadPage(on_navigate=self.navigate_to)
         self.pages["uploader"] = UploaderPage(on_navigate=self.navigate_to)
@@ -90,6 +91,8 @@ class MainWindow(Adw.ApplicationWindow):
         self.pages["settings"] = SettingsPage(on_navigate=self.navigate_to)
         self.pages["about"] = AboutPage(on_navigate=self.navigate_to)
 
+
+        # Builds stack widgets for all registered pages
         for key, page in self.pages.items():
             page_widget = page.build(parent_window=self)
             self.page_stack.add_named(page_widget, key)
@@ -160,6 +163,9 @@ class MainWindow(Adw.ApplicationWindow):
                 ("Custom Import: Pictures", "picdownloader"),
                 ("Custom Import: Videos", "viddownloader"),
                 ("Custom Import: Music", "musdownloader"),
+                # ✅ Each entry must be (label, key) — and "photos_import" isn't a registered page
+                ("📸 Album Browser", "albums"),
+
             ]),
         ]
 
