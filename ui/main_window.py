@@ -8,6 +8,7 @@ import threading
 from ui.function.home_page import HomePage
 from ui.function.config.proton_settings_page import ProtonSettingsPage
 from ui.function.pup.remote.album_explorer_page import AlbumExplorerPage
+from ui.function.pup.remote.photo_explorer_page import PhotoExplorerPage
 from ui.tree.fixdo.upload_page import UploadPage
 from ui.tree.fixdo.download_page import DownloadPage
 from ui.tree.cusdo.uploader_page import UploaderPage
@@ -74,6 +75,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.pages["home"] = HomePage(on_navigate=self.navigate_to)
         self.pages["protonsettingspage"] = ProtonSettingsPage(on_navigate=self.navigate_to)
         self.pages["albums"] = AlbumExplorerPage(on_navigate=self.navigate_to)
+        self.pages["photo"] = PhotoExplorerPage(on_navigate=self.navigate_to)
         self.pages["upload"] = UploadPage(on_navigate=self.navigate_to)
         self.pages["download"] = DownloadPage(on_navigate=self.navigate_to)
         self.pages["uploader"] = UploaderPage(on_navigate=self.navigate_to)
@@ -141,6 +143,8 @@ class MainWindow(Adw.ApplicationWindow):
         for label, key in [
             ("🏠  Home", "home"),
             ("🛡️  Proton Settings Page", "protonsettingspage"),
+            ("🖼️ Album Browser", "albums"),
+            ("📸 Photo Browser", "photo"),
         ]:
             container.append(self._make_nav_button(label, key))
 
@@ -163,8 +167,6 @@ class MainWindow(Adw.ApplicationWindow):
                 ("Custom Import: Pictures", "picdownloader"),
                 ("Custom Import: Videos", "viddownloader"),
                 ("Custom Import: Music", "musdownloader"),
-                # ✅ Each entry must be (label, key) — and "photos_import" isn't a registered page
-                ("📸 Album Browser", "albums"),
 
             ]),
         ]
