@@ -19,12 +19,12 @@ class AlbumExplorerPage:
     def __init__(self, on_navigate=None):
         self.on_navigate = on_navigate
         self._parent_window = None
-        self.current_path = "/photos"
+        self.current_path = "/Albums"
         self.albums = []
         self.selected_album = None
 
         self.config = {
-            "photos_root": "/photos",
+            "photos_root": "/Albums",
             "cli_binary": "proton-drive",
         }
 
@@ -33,8 +33,8 @@ class AlbumExplorerPage:
         self._parent_window = parent_window
 
         main_scroll = Gtk.ScrolledWindow()
-        main_scroll.set_vexpand(True)
-        main_scroll.set_hexpand(True)
+        main_scroll.set_vexpand(False)
+        main_scroll.set_hexpand(False)
 
         container = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
@@ -52,7 +52,7 @@ class AlbumExplorerPage:
         )
 
         title = Gtk.Label(
-            label="<span size='x-large' weight='bold'>📸 Album Explorer</span>"
+            label="<span size='x-large' weight='bold'>🖼️ Album Explorer</span>"
         )
         title.set_use_markup(True)
         title.set_halign(Gtk.Align.START)
@@ -203,7 +203,7 @@ class AlbumExplorerPage:
                 albums.append({
                     "name": name,
                     "path": f"{self.current_path}/{name}",
-                    "is_dir": True,
+                    "is_dir": False,
                 })
         return albums
 
