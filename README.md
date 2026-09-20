@@ -11,20 +11,6 @@ _________________________________________________________
 - Opened Sourced & Publicly Available.
 
 _________________________________________________________
-## ✅ Yes, you can now View Photos/Albums within the App 
-> <mark>(Still Limited Experience for now until further updates and improvements)</mark>
-<strong>You Can say now we have a Proton Drive Photo/Album Management. Without the need to manage Photos/Albums in Web Browser</strong>
-##### Albums first look.
-##### It's just getting started.
-<br>
- 
- - Loading whats in the Albums/Photos
-<img src="screenshot/v1210/Albums-Loading.png" width="300" height="300" alt="ProtonDrive-Albums">
- - Shown total of items in Albums/Photos
-<img src="screenshot/v1210/albums-shown-total-and-icons.png" width="300" height="300" alt="ProtonDrive-Albums">
- - Albums Options and Tweeks
-<img src="screenshot/v1210/Albums-Options.png" width="300" height="300" alt="ProtonDrive-Albums">
-
 
 ## 🌟 Lists of benefits on why This App exists and use cases.
 
@@ -93,7 +79,7 @@ If you'd like to suggest ideas on what to add—anything helps make this app bet
 <img src="screenshot/v127/dropdown_menu_help.png" width="250" height="250" alt="screenshots">
 
  - Login and Logout UI popup
- - Yes now you can log in and out with this GUI app.
+ -  Yes now you can log in and out with this GUI app.
 <img src="screenshot/v127/auth_window.png" width="250" height="250" alt="Logo">
 <img src="screenshot/v127/auth_window_login.png" width="250" height="250" alt="screenshots">
 <img src="screenshot/v127/auth_window_logout.png" width="250" height="250" alt="screenshots">
