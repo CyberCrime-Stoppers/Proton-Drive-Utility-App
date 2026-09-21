@@ -6,7 +6,7 @@ _________________________________________________________
 - Unofficial
 - Currently in: Beta.
 - Released Date: 07/03/2026. [MM/DD/YYYY]
-- App version: v1.2.9 - updated: 09/10/2026. [MM/DD/YYYY]
+- App version: v1.2.10 - updated: 09/13/2026. [MM/DD/YYYY]
 - Language: Python | Shell script
 - Standard Libraries: subprocess | threading | os | shutil | webbrowser | subprocess
 - Module(s): GTK4 | Libadwaita
