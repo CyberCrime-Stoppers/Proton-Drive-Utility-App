@@ -9,6 +9,7 @@ _________________________________________________________
 - App version: v1.2.10 - updated: 09/13/2026. [MM/DD/YYYY]
 - Language: Python | Shell script
 - Standard Libraries: subprocess | threading | os | shutil | webbrowser | subprocess
+- GUI Framework: gi (PyGObject) - _The bridge to access C libraries (GTK, Adw)._
 - Module(s): GTK4 | Libadwaita
 - Opened Sourced & Publicly Available.
 
