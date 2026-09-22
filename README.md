@@ -119,15 +119,15 @@ If you'd like to suggest ideas on what to add—anything helps make this app bet
 
 ##### Albums first look.
 ##### It's just getting started.
+
 <br>
  
- - Loading whats in the Albums/Photos
+- Loading whats in the Albums/Photos
    <img src="screenshot/v1210/Albums-Loading.png" width="300" height="300" alt="ProtonDrive-Albums">
 
- - Shown total of items in Albums/Photos 
+- Shown total of items in Albums/Photon
    <img src="screenshot/v1210/albums-shown-total-and-icons.png" width="300" height="300" alt="ProtonDrive-Albums">
-
- - Albums Options and Tweeks
+ 
+- Albums Options and Tweeks
    <img src="screenshot/v1210/Albums-Options.png" width="300" height="300" alt="ProtonDrive-Albums">
-<br>
 
