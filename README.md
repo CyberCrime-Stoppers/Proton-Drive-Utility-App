@@ -4,31 +4,16 @@ _________________________________________________________
 
 # Proton Drive Utility App 
 - Unofficial
-- Currently in: Beta.
-- Released Date: 07/03/2026. [MM/DD/YYYY]
-- App version: v1.2.10 - updated: 09/13/2026. [MM/DD/YYYY]
-- Language: Python | Shell script
-- Standard Libraries: subprocess | threading | os | shutil | webbrowser | subprocess
+- Currently in: _Beta._
+- Released Date: _07/03/2026. [MM/DD/YYYY]_
+- App version: _v1.2.10 - updated: 09/13/2026. [MM/DD/YYYY]_
+- Language: _Python | Shell script_
+- Standard Libraries: _subprocess | threading | os | shutil | webbrowser | subprocess_
 - GUI Framework: gi (PyGObject) - _The bridge to access C libraries (GTK, Adw)._
-- Module(s): GTK4 | Libadwaita
-- Opened Sourced & Publicly Available.
+- Module(s): _GTK4 | Libadwaita_
+- _Opened Sourced & Publicly Available._
 
 _________________________________________________________
-
-## ✅ Yes, you can now View Photos/Albums within the App 
-> <mark>(Still Limited Experience for now until further updates and improvements)</mark>
-<strong>You Can say now we have a Proton Drive Photo/Album Management. Without the need to manage Photos/Albums in Web Browser</strong>
-##### Albums first look.
-##### It's just getting started.
-<br>
- 
- - Loading whats in the Albums/Photos
-<img src="screenshot/v1210/Albums-Loading.png" width="300" height="300" alt="ProtonDrive-Albums">
- - Shown total of items in Albums/Photos
-<img src="screenshot/v1210/albums-shown-total-and-icons.png" width="300" height="300" alt="ProtonDrive-Albums">
- - Albums Options and Tweeks
-<img src="screenshot/v1210/Albums-Options.png" width="300" height="300" alt="ProtonDrive-Albums">
-<br>
 
 ## 🌟 Lists of benefits on why This App exists and use cases.
 
@@ -46,12 +31,17 @@ Having a Proton utility app comes with all sorts of benefits:
 > If and when the Official Proton Drive App has been released by proton AG and their team surely many out there would still use this App.
 of the many benefits listed above. ☝️
 
----
+<br>
+
+## ✅ Yes, you can now View Photos/Albums within the App 
+> <mark>(Still Limited Experience for now until further updates and improvements)</mark>
+<strong>You Can say now we have a Proton Drive Photo/Album Management. Without the need to manage Photos/Albums in Web Browser</strong>
+
+<br>
 
 Thank you, <strong> Proton AG </strong>. The community will love and experiment with proton cli, developing their own ways of using it and wanting more flexibility with Proton's services.
 
- - Home Page with authentication windowing.
-<img src="screenshot/v127/auth_window.png" width="600" height="600" alt="screenshots">
+<br>
 
 ## Compatibility
 
@@ -59,25 +49,27 @@ This app is designed to work with the **Proton Drive CLI binary file**. It execu
 
 Future updates will roll out for this app, especially whenever Proton AG releases updates to the Proton Drive CLI binary.
 
+<br>
+
 ## 🔓 Open Source & Privacy
 
 <mark>Great news! This app is **open source**,</mark> it's free and it's is accessible and readable at any time—so you know nothing suspicious is running in the background. No telemetry, no data collection by the developer.
 
 If you want to stay safe and receive trusted updates, please download only from this GitHub page.
 
----
+<br>
 
 ## ✅ Yes, you can now login within the App
 
 You can now login within the app - Released Version and Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY]
 
----
+<br>
 
 ## 🔐 Your Data, Your Control
 
 Rest assured that you are in control of your data and what is transmitted over the internet. The developer has no intention of accessing or collecting anything. The source code is available to read at any time.
 
----
+<br>
 
 ## ☕ Support the Project
 
@@ -90,6 +82,14 @@ If you'd like to suggest ideas on what to add—anything helps make this app bet
 <!-- Add your email here -->
 <mark>give-me-ideas@mailservices2.simplelogin.com</mark>
 
+<br>
+<br>
+
+## Sneak Peak on what the app functions in the Graphical User Interface
+
+ - Home Page with authentication windowing.
+<img src="screenshot/v127/auth_window.png" width="600" height="600" alt="screenshots">
+
 ## Screenshots of the App small features and Accessbilities
 
 <img src="screenshot/v127/dropdown_menubar.png" width="250" height="250" alt="screenshots">
@@ -101,22 +101,31 @@ If you'd like to suggest ideas on what to add—anything helps make this app bet
 <img src="screenshot/v127/auth_window.png" width="250" height="250" alt="Logo">
 <img src="screenshot/v127/auth_window_login.png" width="250" height="250" alt="screenshots">
 <img src="screenshot/v127/auth_window_logout.png" width="250" height="250" alt="screenshots">
-
-
-#### Sneak Peak on what the app functions in the Graphical User Interface
  
  - About and Home Page
- >
+ 
 <img src="screenshot/v127/home_page.png" width="400" height="400" alt="screenshots">
 <img src="screenshot/v126/about_page.png" width="400" height="400" alt="screenshots">
  
  - Custom fixed documents - uploads page and download page
- >
+
 <img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="screenshots">
 <img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="screenshots">
- 
+
  - Custom documents - uploads page and downloads page
- >
+
 <img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="screenshots">
 <img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="screenshots">
+
+##### Albums first look.
+##### It's just getting started.
+<br>
+ 
+ - Loading whats in the Albums/Photos
+<img src="screenshot/v1210/Albums-Loading.png" width="300" height="300" alt="ProtonDrive-Albums">
+ - Shown total of items in Albums/Photos
+<img src="screenshot/v1210/albums-shown-total-and-icons.png" width="300" height="300" alt="ProtonDrive-Albums">
+ - Albums Options and Tweeks
+<img src="screenshot/v1210/Albums-Options.png" width="300" height="300" alt="ProtonDrive-Albums">
+<br>
 
