@@ -70,7 +70,7 @@ _________________________________________________________
 <br>
 <i>.</i>
 </sub>
-<b> ⚙️ Appearances *in the -Drop Down Menu*</b>
+<b> 🫥 Appearances *in the -Drop Down Menu*</b>
 <br>
 <br>
 <p> You can change the Appearances to Light, Dark, or Your System Default Appearance Settings is set to.<br><br></p>
