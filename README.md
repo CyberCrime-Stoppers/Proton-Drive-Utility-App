@@ -63,7 +63,7 @@ _________________________________________________________
 <h3> The PDUA Windowing Popup</h3>
 <br>
 <br>
-<b> You can now login within the app - <br> Released in Version of Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same function as you would login using the Proton Drive *Command Line Interface* or *CL*. <br></b>
+<b> You can now login within the app - <br> Released in Version of Date: <br> &nbsp;&nbsp;&nbsp;v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same function as you would login using the Proton Drive *Command Line Interface* or *CL*. <br></b>
 </td>
 </tr> 
 </table>
