@@ -79,18 +79,18 @@ _________________________________________________________
 <br> 
 <sub>
 <br>
-<td width="50%" valign="top"> <img src="screenshot/v127/dropdown_menu_appearances.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<td width="50%" valign="top"> <img src="screenshot/v1210/DropDown_Menu.png" alt="DropDown Menu -> Listed of options Login, New Window, Prefernces, Appearances, and Help." width="100%"> 
 <br> 
 <sub>
 <br>
 <i>.</i>
 </sub>
-<h3> ⚙️ Appearances *in the -Drop Down Menu*</h3>
+<h3> ⚙️ DropDown Menu -> *Login, New Window, Prefernces, Appearances, and Help.*</h3>
 <br>
 <br>
-<p> You can change the Appearances to Light, Dark, or Your System Default Appearance Settings is set to.<br><br></p>
+<p><br><br></p>
 
-<mark>Note: there will be other themes to choose from. also the big theming will be the the amazing popular Dark blue theming by Proton AG Services.</mark>
+<mark>Note: the Preferences is still needs some work and it's not functional.</mark>
 <br> 
 <sub>
 </td>
