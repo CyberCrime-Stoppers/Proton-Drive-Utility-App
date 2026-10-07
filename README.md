@@ -15,40 +15,32 @@ _________________________________________________________
 
 _________________________________________________________
 
-<table> 
-<td width="50%" valign="top">
-<img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> " width="100%">
-<br>
-<sub>
-<br>
-<i> </i>
-</sub>
-<h3> </h3> 
-</td>
+<table>
 
 <td width="50%" valign="top">
 <img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> Information & the Original Author on the Proton Drive Utility App " width="100%">
 <br>
 <sub>
 <br>
-<i> Home Page - The Main and Founder Author in Development of the the Proton Drive Utility App</i>
+<i>(Links to the Main Author and Founder on Developing the *PDUA*)</i>
 </sub>
-<h3> </h3> 
+<h3>Proton Drive Utility App.</h3> 
 </td>
-
 </tr>
 </table>
 
-<tr> <td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<tr> 
+<td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
 <br> 
 <sub>
 <br>
-<i> </i>
+<i>## ✅ Yes, you can now login within the App.</i>
 </sub>
-<h3> </h3>
+<h3> The PDUA Windowing Popup</h3>
 <br>
 <br>
-<b> </b>
+<b> You can now login within the app - Released Version and Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same function as you would login using the Proton Drive *Command Line Interface* or *CL*. <br></b>
+</tr>
 </td> 
 
 <table> 
