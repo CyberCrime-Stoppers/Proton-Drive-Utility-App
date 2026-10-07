@@ -15,6 +15,23 @@ _________________________________________________________
 
 _________________________________________________________
 
+## 🌟 Lists of benefits on why This App exists and use cases.
+
+<mark>The Proton AG team is working hard</mark> to build the official Proton Drive for Linux systems.
+
+ #### Having a Proton utility app can have many benifits
+
+- <strong>📤 Importing/Exporting in and out of your Proton Drive is just a click of a button.
+- <strong>⬇️ A quick way to download everything, rather than using the Proton Drive web interface.
+- <strong>💻 Flexibility for lower-end hardware.
+- <strong>🔄 The ability to download multiple times, so you know your data is always backed up and safe.
+- 
+> 💡 *You can probably think of more amazing uses for this great app.*
+-
+ > If and when the Official Proton Drive App has been released by proton AG and their team surely many out there would still use this App.
+ of the many benefits listed above. ☝️
+
+<br>
 <table>
 <tr>
 <td width="50%" valign="top">
@@ -44,19 +61,21 @@ _________________________________________________________
 
  
 </table>
+
+
 <table>
-<tr>
-<td width="50%" valign="top">
-<img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> Information & the Original Author on the Proton Drive Utility App " width="100%">
-<br>
+<td width="50%" valign="top"> <img src="screenshot/v127/dropdown_menu_appearances.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<br> 
 <sub>
 <br>
-<i>(Links to the Main Author and Founder on Developing the *PDUA*)</i>
+<i>.</i>
 </sub>
-<h3>Proton Drive Utility App.</h3> 
-</td>
+<h3> ⚙️ Appearances *in the -Drop Down Menu*</h3>
+<br>
+<br>
+<p> You can change the Appearances to Light, Dark, or Your System Default Appearance Settings is set to.<br><br></p>
 
-<td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<mark>Note: there will be other themes to choose from. also the big theming will be the the amazing popular Dark blue theming by Proton AG Services.</mark>
 <br> 
 <sub>
 <br>
