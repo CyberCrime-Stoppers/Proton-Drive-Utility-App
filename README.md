@@ -70,7 +70,7 @@ _________________________________________________________
 <br>
 <i>.</i>
 </sub>
-<h3> ⚙️ Appearances *in the -Drop Down Menu*</h3>
+<b> ⚙️ Appearances *in the -Drop Down Menu*</b>
 <br>
 <br>
 <p> You can change the Appearances to Light, Dark, or Your System Default Appearance Settings is set to.<br><br></p>
@@ -90,7 +90,7 @@ _________________________________________________________
 <br>
 <p><br><br></p>
 
-<mark>Note: the Preferences is still needs some work and it's not functional.</mark>
+<mark>Note: the Preferences option listed is still needs some work and it's not functional.</mark>
 <br> 
 <sub>
 </td>
