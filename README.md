@@ -16,26 +16,49 @@ _________________________________________________________
 _________________________________________________________
 
 <table> 
-<tr> <td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface."100%"> 
+<tr> <td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
 <br> 
-<sub><br><i> </i></sub><h3> </h3>
-<br><br>
+<sub>
+<br>
+<i> </i>
+</sub>
+<h3> </h3>
+<br>
+<br>
 <b> </b>
+</td> 
 
-<table> 
-<tr> 
-<td width="33%" valign="top"> 
-<h4></h4>
-</td> <td width="33%" valign="top">
-<h4></h4>
-</td> <td width="33%" valign="top"> 
-<h4> </h4> 
-</td></tr> <tr><td width="33%" valign="top"> 
-<h4> </h4>
-</td> <td width="33%" valign="top"> <h4>
-<code></code><code></code><td width="33%" valign="top"> 
-<h4></h4></td> 
-</tr> 
+<td width="50%" valign="top">
+<img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> " width="100%">
+<br>
+<sub>
+<br>
+<i> </i>
+</sub>
+<h3> </h3> 
+</td>
+
+<td width="50%" valign="top">
+<img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> " width="100%">
+<br>
+<sub>
+<br>
+<i> </i>
+</sub>
+<h3> </h3> 
+</td>
+
+<td width="50%" valign="top">
+<img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> " width="100%">
+<br>
+<sub>
+<br>
+<i> </i>
+</sub>
+<h3> </h3> 
+</td>
+
+</tr>
 </table>
 
 <table> 
@@ -54,124 +77,20 @@ _________________________________________________________
 </tr> 
 </table>
 
+<table> 
+<tr> 
+<td width="33%" valign="top"> 
+<h4></h4>
+</td> <td width="33%" valign="top">
+<h4></h4>
+</td> <td width="33%" valign="top"> 
+<h4> </h4> 
+</td></tr> <tr><td width="33%" valign="top"> 
+<h4> </h4>
+</td> <td width="33%" valign="top"> <h4>
+<code></code><code></code><td width="33%" valign="top"> 
+<h4></h4></td> 
+</tr> 
+</table>
 
-
-
-
-
-## 🌟 Lists of benefits on why This App exists and use cases.
-
-<mark>The Proton AG team is working hard</mark> to build the official Proton Drive for Linux systems.
-
-Having a Proton utility app comes with all sorts of benefits:
-
-- <strong>📤 Importing/Exporting in and out of your Proton Drive is just a click of a button.
-- <strong>⬇️ A quick way to download everything, rather than using the Proton Drive web interface.
-- <strong>💻 Flexibility for lower-end hardware.
-- <strong>🔄 The ability to download multiple times, so you know your data is always backed up and safe.
-- 
-> 💡 *You can probably think of more amazing uses for this great app.*
--
-> If and when the Official Proton Drive App has been released by proton AG and their team surely many out there would still use this App.
-of the many benefits listed above. ☝️
-
-<br>
-
-## ✅ Yes, you can now View Photos/Albums within the App 
-> <mark>(Still Limited Experience for now until further updates and improvements)</mark>
-<strong>You Can say now we have a Proton Drive Photo/Album Management. Without the need to manage Photos/Albums in Web Browser</strong>
-
-<br>
-
-Thank you, <strong> Proton AG </strong>. The community will love and experiment with proton cli, developing their own ways of using it and wanting more flexibility with Proton's services.
-
-<br>
-
-## Compatibility
-
-This app is designed to work with the **Proton Drive CLI binary file**. It executes all commands supported by the underlying CLI, with plenty of options accessible through the graphical interface—eliminating the need for terminal usage.
-
-Future updates will roll out for this app, especially whenever Proton AG releases updates to the Proton Drive CLI binary.
-
-<br>
-
-## 🔓 Open Source & Privacy
-
-<mark>Great news! This app is **open source**,</mark> it's free and it's is accessible and readable at any time—so you know nothing suspicious is running in the background. No telemetry, no data collection by the developer.
-
-If you want to stay safe and receive trusted updates, please download only from this GitHub page.
-
-<br>
-
-## ✅ Yes, you can now login within the App
-
-You can now login within the app - Released Version and Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY]
-
-<br>
-
-## 🔐 Your Data, Your Control
-
-Rest assured that you are in control of your data and what is transmitted over the internet. The developer has no intention of accessing or collecting anything. The source code is available to read at any time.
-
-<br>
-
-## ☕ Support the Project
-
-Thank you! If you'd like to buy me a coffee, you can support me anytime.
-
-## 💡 Ideas & Feedback
-
-If you'd like to suggest ideas on what to add—anything helps make this app better for all Linux users! You can always email me at:
-
-<!-- Add your email here -->
-<mark>give-me-ideas@mailservices2.simplelogin.com</mark>
-
-<br>
-<br>
-
-## Sneak Peak on what the app functions in the Graphical User Interface
-
- - Home Page with authentication windowing.
-<img src="screenshot/v127/auth_window.png" width="600" height="600" alt="screenshots">
-
-## Screenshots of the App small features and Accessbilities
-
-<img src="screenshot/v127/dropdown_menubar.png" width="250" height="250" alt="screenshots">
-<img src="screenshot/v127/dropdown_menu_appearances.png" width="250" height="250" alt="screenshots">
-<img src="screenshot/v127/dropdown_menu_help.png" width="250" height="250" alt="screenshots">
-
- - Login and Logout UI popup
- -  Yes now you can log in and out with this GUI app.
-<img src="screenshot/v127/auth_window.png" width="250" height="250" alt="Logo">
-<img src="screenshot/v127/auth_window_login.png" width="250" height="250" alt="screenshots">
-<img src="screenshot/v127/auth_window_logout.png" width="250" height="250" alt="screenshots">
- 
- - About and Home Page
- 
-<img src="screenshot/v127/home_page.png" width="400" height="400" alt="screenshots">
-<img src="screenshot/v126/about_page.png" width="400" height="400" alt="screenshots">
- 
- - Custom fixed documents - uploads page and download page
-
-<img src="screenshot/v126/custom_fixed_uploader.png" width="400" height="400" alt="screenshots">
-<img src="screenshot/v126/custom_fixed_downloader.png" width="400" height="400" alt="screenshots">
-
- - Custom documents - uploads page and downloads page
-
-<img src="screenshot/v126/custom_upload_documents.png" width="400" height="400" alt="screenshots">
-<img src="screenshot/v126/custom_download_documents.png" width="400" height="400" alt="screenshots">
-
-##### Albums first look.
-##### It's just getting started.
-
-<br>
- 
-- Loading whats in the Albums/Photos <br>
-   <img src="screenshot/v1210/Albums-Loading.png" width="300" height="300" alt="ProtonDrive-Albums">
-
-- Shown total of items in Albums/Photon <br>
-   <img src="screenshot/v1210/albums-shown-total-and-icons.png" width="300" height="300" alt="ProtonDrive-Albums">
- 
-- Albums Options and Tweeks <br>
-   <img src="screenshot/v1210/Albums-Options.png" width="300" height="300" alt="ProtonDrive-Albums">
 
