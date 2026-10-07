@@ -16,6 +16,29 @@ _________________________________________________________
 _________________________________________________________
 
 <table> 
+<tr> <td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface."100%"> 
+<br> 
+<sub><br><i> </i></sub><h3> </h3>
+<br><br>
+<b> </b>
+
+<table> 
+<tr> 
+<td width="33%" valign="top"> 
+<h4></h4>
+</td> <td width="33%" valign="top">
+<h4></h4>
+</td> <td width="33%" valign="top"> 
+<h4> </h4> 
+</td></tr> <tr><td width="33%" valign="top"> 
+<h4> </h4>
+</td> <td width="33%" valign="top"> <h4>
+<code></code><code></code><td width="33%" valign="top"> 
+<h4></h4></td> 
+</tr> 
+</table>
+
+<table> 
 <tr> 
 <td width="33%" valign="top"> 
 <h4></h4>
