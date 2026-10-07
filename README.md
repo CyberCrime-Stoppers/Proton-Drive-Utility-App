@@ -27,9 +27,8 @@ _________________________________________________________
 <h3>Proton Drive Utility App.</h3> 
 </td>
 </tr>
-</table>
-
 <tr> 
+
 <td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
 <br> 
 <sub>
@@ -42,6 +41,7 @@ _________________________________________________________
 <b> You can now login within the app - Released Version and Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same function as you would login using the Proton Drive *Command Line Interface* or *CL*. <br></b>
 </tr>
 </td> 
+</table>
 
 <table> 
 <tr> 
