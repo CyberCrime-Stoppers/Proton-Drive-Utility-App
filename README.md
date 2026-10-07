@@ -85,7 +85,7 @@ _________________________________________________________
 <br>
 <i>.</i>
 </sub>
-<h3> ⚙️ DropDown Menu -> *Login, New Window, Prefernces, Appearances, and Help.*</h3>
+<b>🔽 DropDown Menu -> *Login, New Window, Prefernces, Appearances, and Help.*</b>
 <br>
 <br>
 <p><br><br></p>
