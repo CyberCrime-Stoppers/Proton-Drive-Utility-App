@@ -18,7 +18,7 @@ _________________________________________________________
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> Information & the Original Author on the Proton Drive Utility App " width="50%">
+<img src="screenshot/v127/home_page.png" alt="Proton Drive Utility App - Home Page -> Information & the Original Author on the Proton Drive Utility App " width="100%">
 <br>
 <sub>
 <br>
@@ -27,7 +27,7 @@ _________________________________________________________
 <h3>Proton Drive Utility App.</h3> 
 </td>
 
-<td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="50%"> 
+<td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
 <br> 
 <sub>
 <br>
