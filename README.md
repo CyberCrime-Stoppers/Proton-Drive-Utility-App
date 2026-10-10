@@ -128,9 +128,9 @@ _________________________________________________________
 </tr> 
 </table>
  <br>
- _________________________________________________________
  <br>
  <br>
+ _
  #### Features that has been worked on, that are crucial to have.
  <br>
 <table> 
