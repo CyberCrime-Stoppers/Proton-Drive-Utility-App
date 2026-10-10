@@ -138,15 +138,17 @@ _________________________________________________________
 <i>PDUA is a way to make sure you get the best out of your Proton AG Cloud Drive. There are still features that are not yet implemented. </i>
 </td> <td width="33%" valign="top"> 
 <h5>listed here that need added.</h5> 
-</td></tr> 
+</td>
+</tr> <tr>
+<td width="33%" valign="top"> 
+</td> <td width="33%" valign="top"> <h4>
+<code></code>
+<code></code>
+<td width="33%" valign="top"> 
+<h4></h4>
 <h5><li>Progress Bar: &nbsp; -Importing or Exporting your data in or out of your Cloud Drive should show a progress metor to show on how many queries and speed.'</li></h5>
 <h5><li>Album/Photos Caching: &nbsp; cached photos are needed to help better understand on whats in your proton drive. it's your right to access your data all the way in which you can better manage what matters.'</li></h5>
-<tr><td width="33%" valign="top"> 
-<br>
-<br>
-</td> <td width="33%" valign="top"> <h4>
-<code></code><code></code><td width="33%" valign="top"> 
-<h4></h4></td> 
+</td> 
 </tr> 
 </table>
 
