@@ -130,7 +130,7 @@ _________________________________________________________
 </tr> 
 </table>
 
- #### Features that has been worked on, that are crusial to have.
+ #### Features that has been worked on, that are crucial to have.
 <table> 
 <tr> 
 <td width="10%" valign="top"> 
