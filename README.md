@@ -101,7 +101,7 @@ _________________________________________________________
 <sub>
  <br>
 </sub>
- <h5> 🫥 You can View your Albums and Pictures within the app. instead of viewing in a web browser.</h5>
+ <h5> 👌 You can View your Albums and Pictures within the app. instead of viewing in a web browser.</h5>
  <br>
  <br>
  <p> Now you could say Viewing my pictures/Albums is now possible. and should be a right to do so.<br><br></p>
