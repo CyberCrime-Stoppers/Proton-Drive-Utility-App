@@ -144,11 +144,9 @@ _________________________________________________________
 <tr><td width="%10" valign="top">
 <h4>❌</h4>
 <br>
-<br>
 <h4>❌</h4>
 </td> <td width="10%" valign="top"> <h4>
 <h5><li><mark>Progress Bar:</mark></h5>
-<br>
 <br>
 <h5><li><mark>Album/Photos Caching:</mark></h5>
 <td width="40%" valign="top"> 
