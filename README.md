@@ -134,7 +134,7 @@ _________________________________________________________
 <tr> 
 <td width="10%" valign="top"> 
 <h4>Checked & Implemented</h4>
-</td><td width="30%" valign="top">
+</td><td width="27%" valign="top">
 <i>Here are the List of features that are not yet implemented.</i>
 </td><td width="40%" valign="top"> 
 <h5>Description.</h5> 
