@@ -130,7 +130,6 @@ _________________________________________________________
  <br>
  <br>
  <br>
- _
  #### Features that has been worked on, that are crucial to have.
  <br>
 <table> 
@@ -145,17 +144,23 @@ _________________________________________________________
 </tr> 
 <tr><td width="%10" valign="top">
  <h4>❌</h4>
-<br>
+ <br>
+ <h4>❌</h4>
+ <br>
  <h4>❌</h4>
 </td> <td width="10%" valign="top"> <h4>
  <h5><li><mark>Progress Bar:</mark></h5>
-<br>
+ <br>
  <h5><li><mark>Album/Photos Caching:</mark></h5>
+ <br>
+ <h5><li><mark>Preferences/Options:</mark></h5>
 <td width="40%" valign="top"> 
-<h4></h4>
+ <h4></h4>
  <h5><li> -Importing or Exporting your data in or out of your Proton cloud drive -should show a progress metor bar to show on how many queries and speed a second.</li></h5>
  <h5><li> -Cached photos are needed to help better understand on whats in your proton drive. <br> it's your right to access your data all the way. <br> in which you can better manage what matters.'</li></h5>
-<br>
+ <h5><li> -The Options page or other words Preferences page in the app needs work, added features n options. like (font size, AutoDetect Username, Customizing User Layout - etc). </li></h5>
+
+ <br>
 </td> 
 </tr> 
 </table>
