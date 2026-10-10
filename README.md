@@ -141,9 +141,9 @@ _________________________________________________________
 <table> 
 <tr> 
 <td width="10%" valign="top"> 
- <h4>Checked & Implemented</h4>
+ <h4>Implemented/Fixed</h4>
 </td><td width="25%" valign="top">
- <h4>Here are the List of features.</h4>
+ <h4>Names of Features & Fixes.</h4>
 </td><td width="40%" valign="top"> 
  <h5>Description.</h5> 
 </td>
