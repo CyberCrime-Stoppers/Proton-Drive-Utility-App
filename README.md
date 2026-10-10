@@ -144,8 +144,8 @@ _________________________________________________________
 <h4>❌</h4>
 <h4>❌</h4>
 </td> <td width="33%" valign="top"> <h4>
-<li><mark>Progress Bar:</mark>
-<li><mark>Album/Photos Caching:</mark>
+<h5><li><mark>Progress Bar:</mark></h5>
+<h5><li><mark>Album/Photos Caching:</mark></h5>
 <code></code>
 <code></code>
 <td width="33%" valign="top"> 
