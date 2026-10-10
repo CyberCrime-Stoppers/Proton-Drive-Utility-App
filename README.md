@@ -1,5 +1,5 @@
-<img src="applogo/pdua-rainbow-transparent-small-width.png" width="125" height="150" alt="Logo">
-
+<img src="applogo/pdua-rainbow-transparent-small-width.png" width="125" height="150" alt="Logo"> <br>
+ #### Proton Drive Utility App (PDUA). is CyberCrime-Stoppers (CCS). is the original & Founder on the Developement of this Linux APP. <br> Proudly on Developing this App for Proton AG Users. <br> That want more with their Cloud Drive. 
 _________________________________________________________
 
 # Proton Drive Utility App 
@@ -31,6 +31,7 @@ _________________________________________________________
  > If and when the Official Proton Drive App has been released by proton AG and their team surely many out there would still use this App.
  of the many benefits listed above. ☝️
 
+ 
 <br>
 <table>
 <tr>
@@ -40,7 +41,7 @@ _________________________________________________________
 <sub>
 <br>
 </sub>
-<h5>Proton Drive Utility App (PDUA).</h5> 
+<h4>Proton Drive Utility App (PDUA).</h4> 
 <br>
 </td>
 <td width="50%" valign="top"> <img src="screenshot/v1210/auth_sub-window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
@@ -49,10 +50,10 @@ _________________________________________________________
 <br>
 <i>✅ Yes, you can now login within the App.</i>
 </sub>
-<h3> The PDUA Windowing Popup</h3>
+<h4> The PDUA Windowing Popup</h4>
 <br>
 <br>
-<p style="font-size:8px;">You can now login within the app - <br> Released Version & Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same functions as you would login using the Proton Drive *Command Line Interface* or *CLI*. But with the Graphical Interface we all know & Love.<br><br></p>
+<h5>You can now login within the app - <br> Released Version & Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same functions as you would login using the Proton Drive *Command Line Interface* or *CLI*. But with the Graphical Interface we all know & Love.<br><br></h5>
 
 <mark>*Note*: You still need to Copy the URL within the windowing User Interface after clicking Login, then paste the whole URL into the browser. *Hopefully Proton AG and their Team can fix that inconvenient way*.</mark>
 
