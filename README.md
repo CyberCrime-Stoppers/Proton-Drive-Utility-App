@@ -52,7 +52,7 @@ _________________________________________________________
 <h3> The PDUA Windowing Popup</h3>
 <br>
 <br>
-<b style="font-size:14pt;">You can now login within the app - <br> Released Version & Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same functions as you would login using the Proton Drive *Command Line Interface* or *CLI*. But with the Graphical Interface we all know & Love.<br><br></b>
+<b style="font-size:11pt;">You can now login within the app - <br> Released Version & Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same functions as you would login using the Proton Drive *Command Line Interface* or *CLI*. But with the Graphical Interface we all know & Love.<br><br></b>
 
 <mark>*Note*: You still need to Copy the URL within the windowing User Interface after clicking Login, then paste the whole URL into the browser. *Hopefully Proton AG and their Team can fix that inconvenient way*.</mark>
 
