@@ -166,8 +166,11 @@ _________________________________________________________
  <h5><li> -Cached photos are needed to help better understand on whats in your proton drive. <br> it's your right to access your data all the way. <br> in which you can better manage what matters.'</li></h5>
  <h5><li> -The Options page or other words Preferences page in the app needs work, added features n options. like (font size (FS), AutoDetect Username (ADU), Customizing User Layout (CUL), Auto Importing & Exporting (AIE), - etc). </li></h5>
       <h6><mark>CUL: Users can change anything like how the UI is viewed as and choose how their apps behave.</mark>
+      ...
       <br>FS: Changing the font size user can choose to change size in the side bar panel, sub-windows, or apps pages.
+      ...
       <br><mark>AIE: Auto Detect or set a time when you want your data to be imported or exported in or out of your proton drive.</mark>
+      ...
       <br>ADU: after a user logs in to their proton account, the app should autodetect their username and then display their username for any reinsurance reasons.</h6><br>
  <h5><li> -App Detection. (Knowing users are logged in, Keyboard Shortcuts) adding these features will help alot.</li></h5>
  
