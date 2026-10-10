@@ -2,7 +2,7 @@
  #### Proton Drive Utility App (PDUA); CyberCrime-Stoppers (CCS). is the original & Founder of the Developement of this Linux APP. Proudly on Developing this App for Proton AG Users. <br> That want more with their Cloud Drive situations. 
 _________________________________________________________
 
-# Proton Drive Utility App 
+# Proton Drive Utility App (PDUA)
 - Unofficial
 - Currently in: _Beta._
 - Released Date: _07/03/2026. [MM/DD/YYYY]_
@@ -55,7 +55,7 @@ _________________________________________________________
 <br>
 <h5>You can now login within the app - <br><br> Released Version & Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same functions as you would login using the Proton Drive *Command Line Interface* or *CLI*. But with the Graphical Interface we all know & Love.<br><br></h5>
 
-<mark>*Note*: You still need to Copy the URL within the windowing User Interface after clicking Login, then paste the whole URL into a Web-Browser. <br> !! *Hopefully Proton AG and their Team can fix that inconvenient way*.</mark>
+<mark>*Note*: You still need to Copy the URL within the windowing User Interface after clicking Login, then paste the whole URL into a Web-Browser. <br><br> !! *Hopefully Proton AG and their Team can fix that inconvenient way*.</mark>
 
 </td>
 </tr>
@@ -133,13 +133,17 @@ _________________________________________________________
 <table> 
 <tr> 
 <td width="33%" valign="top"> 
-<h4></h4>
+<h4>Proton Drive Utility App (PDUA)</h4>
 </td> <td width="33%" valign="top">
-<h4></h4>
+<i>PDUA is a way to make sure you get the best out of your Proton AG Cloud Drive.</i>
 </td> <td width="33%" valign="top"> 
-<h4> </h4> 
+<h5>There are still features that are not yet implemented. listed here that need added.</h5> 
 </td></tr> <tr><td width="33%" valign="top"> 
-<h4> </h4>
+<br>
+<br>
+<h5><li>Progress Bar: &nbsp; -Importing or Exporting your data in or out of your Cloud Drive should show a progress metor to show on how many queries and speed.'</li></h5>
+<h5><li>Album/Photos Caching: &nbsp; cached photos are needed to help better understand on whats in your proton drive. it's your right to access your data all the way in which you can better manage what matters.'</li></h5>
+
 </td> <td width="33%" valign="top"> <h4>
 <code></code><code></code><td width="33%" valign="top"> 
 <h4></h4></td> 
