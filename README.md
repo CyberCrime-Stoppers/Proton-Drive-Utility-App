@@ -135,15 +135,15 @@ _________________________________________________________
 <td width="33%" valign="top"> 
 <h4>Proton Drive Utility App (PDUA)</h4>
 </td> <td width="33%" valign="top">
-<i>PDUA is a way to make sure you get the best out of your Proton AG Cloud Drive.</i>
+<i>PDUA is a way to make sure you get the best out of your Proton AG Cloud Drive. There are still features that are not yet implemented. </i>
 </td> <td width="33%" valign="top"> 
-<h5>There are still features that are not yet implemented. listed here that need added.</h5> 
-</td></tr> <tr><td width="33%" valign="top"> 
-<br>
-<br>
+<h5>listed here that need added.</h5> 
+</td></tr> 
 <h5><li>Progress Bar: &nbsp; -Importing or Exporting your data in or out of your Cloud Drive should show a progress metor to show on how many queries and speed.'</li></h5>
 <h5><li>Album/Photos Caching: &nbsp; cached photos are needed to help better understand on whats in your proton drive. it's your right to access your data all the way in which you can better manage what matters.'</li></h5>
-
+<tr><td width="33%" valign="top"> 
+<br>
+<br>
 </td> <td width="33%" valign="top"> <h4>
 <code></code><code></code><td width="33%" valign="top"> 
 <h4></h4></td> 
