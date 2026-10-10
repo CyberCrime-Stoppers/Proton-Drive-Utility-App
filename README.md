@@ -132,6 +132,8 @@ _________________________________________________________
  <br>
  #### Features that has been worked on, that are crucial to have.
  <br>
+  ❌ NOT Implemented/Broken ||| ✅ Implemented/Fixed
+ <br>
 <table> 
 <tr> 
 <td width="10%" valign="top"> 
