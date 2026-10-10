@@ -148,8 +148,6 @@ _________________________________________________________
 <h5><li><mark>Progress Bar:</mark></h5>
 <br>
 <h5><li><mark>Album/Photos Caching:</mark></h5>
-<code></code>
-<code></code>
 <td width="33%" valign="top"> 
 <h4></h4>
 <h5><li> -Importing or Exporting your data in or out of your Cloud Drive <br> should show a progress metor to show on how many queries and speed.</li></h5>
