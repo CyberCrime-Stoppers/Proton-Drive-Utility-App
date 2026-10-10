@@ -132,8 +132,8 @@ _________________________________________________________
  #### Features that has been worked on, that are crucial to have.
  <br>
  <br>
-  ||| ✅ Implemented/Fixed 
-  ||| ❌ NOT Implemented/Broken
+  > ✅ Implemented/Fixed 
+  > ❌ NOT Implemented/Broken
  <br>
  <br>
 <table> 
