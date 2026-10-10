@@ -130,12 +130,13 @@ _________________________________________________________
 </tr> 
 </table>
 
+ #### Features that has been worked on, that are crusial to have.
 <table> 
 <tr> 
 <td width="10%" valign="top"> 
 <h4>Checked & Implemented</h4>
 </td><td width="25%" valign="top">
-<i>Here are the List of features that are not yet implemented.</i>
+<i>Here are the List of features.</i>
 </td><td width="40%" valign="top"> 
 <h5>Description.</h5> 
 </td>
