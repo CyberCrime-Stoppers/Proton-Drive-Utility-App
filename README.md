@@ -137,7 +137,7 @@ _________________________________________________________
 <td width="10%" valign="top"> 
  <h4>Checked & Implemented</h4>
 </td><td width="25%" valign="top">
- <i>Here are the List of features.</i>
+ <h4>Here are the List of features.</h4>
 </td><td width="40%" valign="top"> 
  <h5>Description.</h5> 
 </td>
