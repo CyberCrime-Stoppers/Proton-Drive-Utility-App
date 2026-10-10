@@ -129,10 +129,10 @@ _________________________________________________________
 </table>
  <br>
  <br>
- <br>
  #### Features that has been worked on, that are crucial to have.
  <br>
-  ❌ NOT Implemented/Broken ||| ✅ Implemented/Fixed
+  ✅ Implemented/Fixed ||| ❌ NOT Implemented/Broken
+ <br>
  <br>
 <table> 
 <tr> 
