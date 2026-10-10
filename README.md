@@ -146,7 +146,7 @@ _________________________________________________________
 <code></code>
 <td width="33%" valign="top"> 
 <h4></h4>
-<h5><li><mark style="background:orange;">Progress Bar:</mark> &nbsp; -Importing or Exporting your data in or out of your Cloud Drive should show a progress metor to show on how many queries and speed.'</li></h5>
+<h5><li><mark background="orange">Progress Bar:</mark> &nbsp; -Importing or Exporting your data in or out of your Cloud Drive should show a progress metor to show on how many queries and speed.'</li></h5>
 <h5><li><mark>Album/Photos Caching:</mark> &nbsp; cached photos are needed to help better understand on whats in your proton drive. it's your right to access your data all the way in which you can better manage what matters.'</li></h5>
 </td> 
 </tr> 
