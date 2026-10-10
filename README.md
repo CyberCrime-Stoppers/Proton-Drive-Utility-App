@@ -129,8 +129,13 @@ _________________________________________________________
 </td>
 </tr> 
 </table>
-
+ <br>
+ _________________________________________________________
+ <br>
+ <br>
  #### Features that has been worked on, that are crucial to have.
+ <br>
+ <mark>💬 it is currently in progress.</mark>
 <table> 
 <tr> 
 <td width="10%" valign="top"> 
