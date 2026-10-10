@@ -44,7 +44,7 @@ _________________________________________________________
 </sub>
 <h5>Proton Drive Utility App (PDUA).</h5> 
 </td>
-<td width="50%" valign="top"> <img src="screenshot/v127/auth_window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<td width="50%" valign="top"> <img src="screenshot/v1210/auth_sub-window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
 <br> 
 <sub>
 <br>
