@@ -32,65 +32,64 @@ _________________________________________________________
  of the many benefits listed above. ☝️
 
  
-<br>
+ <br>
 <table>
 <tr>
 <td width="50%" valign="top">
 <img src="screenshot/v1210/HomeScreen_Page.png" alt="Proton Drive Utility App - Home Page -> Information & the Original Author on the Proton Drive Utility App " width="100%">
-<br>
+ <br>
 <sub>
-<br>
+ <br>
 </sub>
-<h4>Proton Drive Utility App (PDUA).</h4> 
-<br>
+ <h4>Proton Drive Utility App (PDUA).</h4> 
+ <br>
 </td>
 <td width="50%" valign="top"> <img src="screenshot/v1210/auth_sub-window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
-<br> 
+ <br> 
 <sub>
-<br>
-<i>✅ Yes, you can now login within the App.</i>
+ <br>
+ <i>✅ Yes, you can now login within the App.</i>
 </sub>
-<h4> The PDUA Windowing Popup</h4>
-<br>
-<br>
-<h5>You can now login within the app - <br><br> Released Version & Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same functions as you would login using the Proton Drive *Command Line Interface* or *CLI*. But with the Graphical Interface we all know & Love.<br><br></h5>
+ <h4> The PDUA Windowing Popup</h4>
+ <br>
+ <br>
+ <h5>You can now login within the app - <br><br> Released Version & Date: v1.2.7 - 08/23/2026. [MM/DD/YYYY] <br><br> It's the same functions as you would login using the Proton Drive *Command Line Interface* or *CLI*. But with the Graphical Interface we all know & Love.<br><br></h5>
 
-<mark>*Note*: You still need to Copy the URL within the windowing User Interface after clicking Login, then paste the whole URL into a Web-Browser. <br><br> !! *Hopefully Proton AG and their Team can fix that inconvenient way*.</mark>
+ <mark>*Note*: You still need to Copy the URL within the windowing User Interface after clicking Login, then paste the whole URL into a Web-Browser. <br><br> !! *Hopefully Proton AG and their Team can fix that inconvenient way*.</mark>
 
 </td>
 </tr>
 </table>
 
-
 <table>
 <td width="50%" valign="top"> <img src="screenshot/v127/dropdown_menu_appearances.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
-<br> 
+ <br> 
 <sub>
-<br>
-<i>.</i>
+ <br>
+ <i></i>
 </sub>
-<h5> 🫥 Appearances *in the -Drop Down Menu*</h5>
-<br>
-<br>
-<p> You can change the Appearances to Light, Dark, or Your System Default Appearance Settings is set to.<br><br></p>
+ <h5> 🫥 Appearances *in the -Drop Down Menu*</h5>
+ <br>
+ <br>
+ <p> You can change the Appearances to Light, Dark, or Your System Default Appearance Settings is set to.<br><br></p>
 
-<mark>Note: there will be other themes to choose from. also the big theming will be the the amazing popular Dark blue theming by Proton AG Services.</mark>
-<br> 
+ <mark>Note: there will be other themes to choose from. also the big theming will be the the amazing popular Dark blue theming by Proton AG Services.</mark>
+ <br> 
 <sub>
-<br>
+ <br>
 <td width="50%" valign="top"> <img src="screenshot/v1210/DropDown_Menu.png" alt="DropDown Menu -> Listed of options Login, New Window, Prefernces, Appearances, and Help." width="100%"> 
-<br> 
+ <br> 
 <sub>
-<br>
-<i>.</i>
+ <br>
+ <i>.</i>
 </sub>
-<b>🔽 DropDown Menu -> *Login, New Window, Prefernces, Appearances, and Help.*</b>
-<br>
-<br>
-<p><br><br></p>
-
-<mark>Note: the Preferences option listed is still needs some work and it's not functional.</mark>
-<br> 
+ <b>🔽 DropDown Menu -> *Login, New Window, Prefernces, Appearances, and Help.*</b>
+ <br>
+ <br>
+ <p><br><br></p>
+ 
+ <mark>Note: the Preferences option listed is still needs some work and it's not functional.</mark>
+ <br> 
 <sub>
 </td>
 </tr> 
@@ -98,17 +97,16 @@ _________________________________________________________
 
 <table>
 <td width="50%" valign="top"> <img src="screenshot/v1210/GUI_Photos.png" alt="Proton Drive Album User Interface - first time to manage and View your Albums and Pictures/Videos." width="100%"> 
-<br> 
+ <br> 
 <sub>
-<br>
-<i>.</i>
+ <br>
 </sub>
-<h5> 🫥 You can View your Albums and Pictures within the app. instead of viewing in a web browser.</h5>
-<br>
-<br>
-<p> Now you could say Viewing my pictures/Albums is now possible. and should be a right to do so.<br><br></p>
+ <h5> 🫥 You can View your Albums and Pictures within the app. instead of viewing in a web browser.</h5>
+ <br>
+ <br>
+ <p> Now you could say Viewing my pictures/Albums is now possible. and should be a right to do so.<br><br></p>
 
-<mark>Note: It's still in testing and not fully working yet. it will show how many albums 'counted' for also can show actual albums names. no thumbnails. working on ways to properly cache the thumbnails in a safe manner. the follows *Proton AG TOS*</mark>
+ <mark>Note: It's still in testing and not fully working yet. it will show how many albums 'counted' for also can show actual albums names. no thumbnails. working on ways to properly cache the thumbnails in a safe manner. the follows *Proton AG TOS*</mark>
 <br> 
 <sub>
 <br>
@@ -118,13 +116,13 @@ _________________________________________________________
 <br>
 <i>.</i>
 </sub>
-<b>🔽 DropDown Menu -> *Login, New Window, Prefernces, Appearances, and Help.*</b>
+ <b>🔽 DropDown Menu -> *Login, New Window, Prefernces, Appearances, and Help.*</b>
 <br>
 <br>
-<p><br><br></p>
+ <p><br><br></p>
 
-<mark>Note: the Preferences option listed is still needs some work and it's not functional.</mark>
-<br> 
+ <mark>Note: the Preferences option listed is still needs some work and it's not functional.</mark>
+ <br> 
 <sub>
 </td>
 </tr> 
@@ -135,29 +133,28 @@ _________________________________________________________
  <br>
  #### Features that has been worked on, that are crucial to have.
  <br>
- <mark>💬 it is currently in progress.</mark>
 <table> 
 <tr> 
 <td width="10%" valign="top"> 
-<h4>Checked & Implemented</h4>
+ <h4>Checked & Implemented</h4>
 </td><td width="25%" valign="top">
-<i>Here are the List of features.</i>
+ <i>Here are the List of features.</i>
 </td><td width="40%" valign="top"> 
-<h5>Description.</h5> 
+ <h5>Description.</h5> 
 </td>
 </tr> 
 <tr><td width="%10" valign="top">
-<h4>❌</h4>
+ <h4>❌</h4>
 <br>
-<h4>❌</h4>
+ <h4>❌</h4>
 </td> <td width="10%" valign="top"> <h4>
-<h5><li><mark>Progress Bar:</mark></h5>
+ <h5><li><mark>Progress Bar:</mark></h5>
 <br>
-<h5><li><mark>Album/Photos Caching:</mark></h5>
+ <h5><li><mark>Album/Photos Caching:</mark></h5>
 <td width="40%" valign="top"> 
 <h4></h4>
-<h5><li> -Importing or Exporting your data in or out of your Proton cloud drive -should show a progress metor bar to show on how many queries and speed a second.</li></h5>
-<h5><li> -Cached photos are needed to help better understand on whats in your proton drive. <br> it's your right to access your data all the way. <br> in which you can better manage what matters.'</li></h5>
+ <h5><li> -Importing or Exporting your data in or out of your Proton cloud drive -should show a progress metor bar to show on how many queries and speed a second.</li></h5>
+ <h5><li> -Cached photos are needed to help better understand on whats in your proton drive. <br> it's your right to access your data all the way. <br> in which you can better manage what matters.'</li></h5>
 <br>
 </td> 
 </tr> 
