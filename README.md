@@ -135,7 +135,7 @@ _________________________________________________________
  ✅ Implemented/Fixed
  <br>
  <br>
- ❌ NOT Implemented/Broken (As of yet)
+ ❌ NOT Implemented/Fixed (As of yet)
  <br>
  <br>
 <table> 
