@@ -152,8 +152,8 @@ _________________________________________________________
 <h5><li><mark>Album/Photos Caching:</mark></h5>
 <td width="40%" valign="top"> 
 <h4></h4>
-<h5><li> -Importing or Exporting your data in or out of your Cloud Drive <br> should show a progress metor to show on how many queries and speed.</li></h5>
-<h5><li> -Cached photos are needed to help better understand on whats in your proton drive. <br> it's your right to access your data all the way in which you can better manage what matters.'</li></h5>
+<h5><li> -Importing or Exporting your data in or out of your Proton cloud drive -should show a progress metor bar to show on how many queries and speed a second.</li></h5>
+<h5><li> -Cached photos are needed to help better understand on whats in your proton drive. <br> it's your right to access your data all the way. <br> in which you can better manage what matters.'</li></h5>
 <br>
 </td> 
 </tr> 
