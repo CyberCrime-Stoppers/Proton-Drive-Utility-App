@@ -17,9 +17,9 @@ _________________________________________________________
 
 ### AI vs Human - Developed. [Created By]
 - LLM/AI (% of 100)
-<br>
-> [pdua] (25 %)
 <br><br>
+> [pdua] (25 %)
+<br>
 - HUMAN  (%)
 <br><br>
 > [pdua] (75 %)
