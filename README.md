@@ -16,7 +16,7 @@ _________________________________________________________
 - _Opened Sourced & Publicly Available._
 
 ### AI vs Human - Developed. [Created By]
-- LLM - AI (%)
+- LLM/AI (%)
 
 <br>
 
