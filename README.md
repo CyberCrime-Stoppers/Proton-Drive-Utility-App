@@ -16,11 +16,13 @@ _________________________________________________________
 - _Opened Sourced & Publicly Available._
 
 ### AI vs Human - Developed. [Created By]
-#####LLM/AI (% of 100)
+- LLM - AI (% of 100)
 <br>
 > [pdua] (25 %)
 <br>
-#####HUMAN  (%)
+<br>
+
+- HUMAN  (%)
 <br> 
 > [pdua] (75 %)
 _________________________________________________________
