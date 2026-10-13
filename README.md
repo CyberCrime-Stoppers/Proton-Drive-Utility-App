@@ -17,14 +17,20 @@ _________________________________________________________
 
 ### AI vs Human - Developed. [Created By]
 - LLM - AI (% of 100)
+
 <br>
+
 > pdua (25 %)
+
 <br>
 <br>
 
 - HUMAN  (%)
-<br> 
+
+<br>
+ 
 > pdua (75 %)
+
 <br>
 
 ## 🌟 Lists of benefits on why This App exists and use cases.
