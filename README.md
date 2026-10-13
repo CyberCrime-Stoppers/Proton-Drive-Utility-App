@@ -1,5 +1,7 @@
 <img src="applogo/pdua-rainbow-transparent-small-width.png" width="125" height="150" alt="Logo"> <br>
  #### Proton Drive Utility App (PDUA); CyberCrime-Stoppers (CCS). is the original & Founder of the Developement of this Linux APP. Proudly on Developing this App for Proton AG Users. <br> For users that want more with their Cloud Drive situations. 
+ 
+ 
 _________________________________________________________
 
 # Proton Drive Utility App (PDUA)
@@ -12,6 +14,17 @@ _________________________________________________________
 - GUI Framework: gi (PyGObject) - _The bridge to access C libraries (GTK, Adw)._
 - Module(s): _GTK4 | Libadwaita_
 - _Opened Sourced & Publicly Available._
+
+	### AI vs Human - Developed. [Created By]
+	- LLM/AI (% of 100)
+	<br>
+	> [pdua] (25 %)
+	> [lcp]  (60 %)
+	<br><br>
+	- HUMAN  (%)
+	<br>
+	> [pdua] (75 %)
+	> [lcp]  (40 %)
 
 _________________________________________________________
 
