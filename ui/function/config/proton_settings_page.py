@@ -1,205 +1,222 @@
-import gi
-gi.require_version("Gtk", "4.0")
-gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio
+#!/usr/bin/env python3
+
 import os
-from ui.function.config_manager import ConfigManager
-from ui.function.pup.file_browser import FileBrowserWindow
+import json
+import shutil
+import tempfile
+import threading
+from pathlib import Path
+
+# ----------------------------------------------------------------------
+# Constants
+# ----------------------------------------------------------------------
+VERSION = "1.2.10"
+
+_XDG = os.environ.get("XDG_CONFIG_HOME") or os.path.expanduser("~/.config")
+CONFIG_DIR = Path(_XDG) / "pdua"
+CONFIG_FILE = CONFIG_DIR / "config.json"
+
+# Legacy locations migrated FROM (read-only, never written again)
+LEGACY_CONFIG_FILES = [
+    Path(_XDG) / "auth2portal" / "config.json",
+    Path(_XDG) / "protondrive-utilityapp" / "settings.json",
+]
+
+# Keys that must NEVER be carried across from legacy configs
+FORBIDDEN_KEYS = {"passcode", "password", "passphrase", "token", "secret", "credentials"}
+
+DEFAULTS = {
+    "version": VERSION,
+    "migrated": False,
+
+    # Identity
+    "username": "",
+
+    # Appearance / behaviour
+    "dark_mode": False,
+    "notifications": True,
+    "font_size": 9,
+
+    # CLI
+    "cli_binary": None,
+
+    # Remote destinations
+    "proton_drive_myfiles_remote": "/my-files",
+    "proton_drive_albums_remote": "/albums",
+    "proton_drive_photos_remote": "/photos",
+    "proton_drive_trash_remote": "/trash",
+
+    # Local folders
+    "local_source_myfiles": "",
+    "local_source_albums": "",
+    "local_source_photos": "",
+    "local_source_trash": "",
+}
 
 
-class ProtonSettingsPage:
-    """Settings page where users configure upload destinations."""
+class ConfigManager:
+    """Thread-safe, recursion-free configuration manager."""
 
-    def __init__(self, on_navigate=None):
-        self.on_navigate = on_navigate
-        self.config = ConfigManager.load()
-        self._parent_window = None
+    _lock = threading.Lock()
+    _cache = None
 
-    def build(self, parent_window=None):
-        self._parent_window = parent_window
+    def __init__(self):
+        pass
 
-        self.entry_remote_myfiles = Gtk.Entry()
-        self.entry_remote_myfiles.set_text(self.config["proton_drive_myfiles_remote"])
-        self.entry_remote_myfiles.set_hexpand(True)
+    # ------------------------------------------------------------------
+    # PUBLIC API
+    # ------------------------------------------------------------------
+    def load(self):
+        """
+        Return the effective config (defaults merged with user values).
 
-        self.entry_remote_albums = Gtk.Entry()
-        self.entry_remote_albums.set_text(self.config["proton_drive_albums_remote"])
-        self.entry_remote_albums.set_hexpand(True)
+        Migration happens at most ONCE perinstall, and is performed inline
+        without ever re-entering load().
+        """
+        with ConfigManager._lock:
+            if ConfigManager._cache is not None:
+                return dict(ConfigManager._cache)
 
-        self.entry_remote_photos = Gtk.Entry()
-        self.entry_remote_photos.set_text(self.config["proton_drive_photos_remote"])
-        self.entry_remote_photos.set_hexpand(True)
+            stored = self._read_json(CONFIG_FILE) or {}
 
-        self.entry_remote_trash = Gtk.Entry()
-        self.entry_remote_trash.set_text(self.config["proton_drive_trash_remote"])
-        self.entry_remote_trash.set_hexpand(True)
+            # ---- One-time legacy migration ----
+            if not stored.get("migrated", False):
+                stored = self._merge_legacy(stored)
+                stored["migrated"] = True
+                merged = {**DEFAULTS, **stored}
+                # Direct write. NOT save(). NOT load(). No recursion possible.
+                self._write_json(merged)
+                ConfigManager._cache = merged
+                return dict(merged)
 
-        # --- Entries ID A/1 --- File Explorer windowing ---
+            merged = {**DEFAULTS, **stored}
+            ConfigManager._cache = merged
+            return dict(merged)
 
-        self.entry_myfiles = Gtk.Entry()
-        self.entry_myfiles.set_text(self.config["local_source_myfiles"])
-        self.entry_myfiles.set_hexpand(True)
+    def save(self, config):
+        """Merge with defaults and persist atomically. Returns bool."""
+        with ConfigManager._lock:
+            merged = {**DEFAULTS, **(config or {})}
+            merged["migrated"] = True          # never re-migrate after a save
+            ok = self._write_json(merged)
+            if ok:
+                ConfigManager._cache = merged
+            return ok
 
-        self.entry_albums = Gtk.Entry()
-        self.entry_albums.set_text(self.config["local_source_albums"])
-        self.entry_albums.set_hexpand(True)
+    def reset(self):
+        """Delete the config file and clear the cache."""
+        with ConfigManager._lock:
+            try:
+                if CONFIG_FILE.exists():
+                    CONFIG_FILE.unlink()
+            except Exception:
+                pass
+            ConfigManager._cache = None
+            return True
 
-        self.entry_photos = Gtk.Entry()
-        self.entry_photos.set_text(self.config["local_source_photos"])
-        self.entry_photos.set_hexpand(True)
+    # ------------------------------------------------------------------
+    # MIGRATION (reads legacy files directly — never calls load/save)
+    # ------------------------------------------------------------------
+    def _merge_legacy(self, current):
+        merged = dict(current)
+        for legacy_path in LEGACY_CONFIG_FILES:
+            if not legacy_path.exists():
+                continue
+            legacy_data = self._read_json(legacy_path)
+            if not isinstance(legacy_data, dict):
+                continue
+            for key, value in legacy_data.items():
+                if key in FORBIDDEN_KEYS:
+                    continue                      # drop credentials, by design
+                if key not in DEFAULTS:
+                    continue                      # ignore unknown/foreign keys
+                if key in merged and merged[key] not in (None, "", [], {}):
+                    continue                      # don't clobber existing values
+                merged[key] = value
+        return merged
 
-        self.entry_trash = Gtk.Entry()
-        self.entry_trash.set_text(self.config["local_source_trash"])
-        self.entry_trash.set_hexpand(True)
+    # ------------------------------------------------------------------
+    # LOW-LEVEL IO
+    # ------------------------------------------------------------------
+    @staticmethod
+    def _read_json(path):
+        """Read JSON, returning None on ANY failure. Never raises."""
+        try:
+            with open(path, "r", encoding="utf-8") as fh:
+                return json.load(fh)
+        except Exception:
+            return None
 
-        self.entry_cli = Gtk.Entry()
-        self.entry_cli.set_text(self.config["cli_binary"])
-        self.entry_cli.set_hexpand(True)
+    @staticmethod
+    def _write_json(data):
+        """Atomic write via tempfile + os.replace. Never raises."""
+        try:
+            CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+            fd, tmp_path = tempfile.mkstemp(dir=str(CONFIG_DIR), suffix=".tmp")
+            try:
+                with os.fdopen(fd, "w", encoding="utf-8") as fh:
+                    json.dump(data, fh, indent=2, sort_keys=False)
+                os.replace(tmp_path, CONFIG_FILE)
+            except Exception:
+                try:
+                    os.unlink(tmp_path)
+                except Exception:
+                    pass
+                raise
+            return True
+        except Exception:
+            return False
 
-        # --- Build rows ---
-        def build_row(title, subtitle, child):
-            row = Adw.ActionRow()
-            row.set_title(title)
-            row.set_subtitle(subtitle)
-            row.add_suffix(child)
-            return row
+    # ------------------------------------------------------------------
+    # CLI DISCOVERY (raw file read — no load(), no recursion)
+    # ------------------------------------------------------------------
+    @staticmethod
+    def find_cli(explicit=None):
+        """
+        Locate the proton-drive binary.
+        Order: explicit arg -> saved config -> standard paths -> PATH lookup.
+        """
+        candidates = []
 
-    # --- Entries ID A/0 --- Proton Side Panel Sub Directories
+        if explicit:
+            candidates.append(explicit)
 
-        remote_myfiles_row = build_row(
-            "Proton Drive Destination",
-            "Remote folder path on Drive (e.g. /my-files/Documents)",
-            self.entry_remote_myfiles,
-        )
+        # Raw read so we never trigger load()/migration from here
+        raw = ConfigManager._read_json(CONFIG_FILE) or {}
+        saved = raw.get("cli_binary")
+        if saved:
+            candidates.append(saved)
 
-        remote_albums_row = build_row(
-            "Proton Drive Destination",
-            "Remote folder path on Drive (e.g. /album/)",
-            self.entry_remote_albums,
-        )
+        home = os.path.expanduser("~")
+        candidates.extend([
+            "/usr/bin/proton-drive",
+            "/usr/local/bin/proton-drive",
+            os.path.join(home, ".local", "bin", "proton-drive"),
+            # Flatpak (per-user)
+            os.path.join(home, ".local", "share", "flatpak", "app",
+                         "dev.proton.drive", "current", "active", "files", "bin",
+                         "proton-drive"),
+            # Flatpak (system)
+            "/var/lib/flatpak/app/dev.proton.drive/current/active/files/bin/proton-drive",
+            # Snap
+            "/snap/proton-drive/current/bin/proton-drive",
+            "/snap/bin/proton-drive",
+        ])
 
-        remote_photos_row = build_row(
-            "Proton Drive Destination",
-            "Remote folder path on Drive (e.g. /album/)",
-            self.entry_remote_photos,
-        )
+        for candidate in candidates:
+            if candidate and os.path.isfile(candidate) and os.access(candidate, os.X_OK):
+                return candidate
 
-        remote_trash_row = build_row(
-            "Proton Drive Destination",
-            "Remote folder path on Drive (e.g. /trash/)",
-            self.entry_remote_trash,
-        )
-
-        # --- Entries ID A/1 --- File Explorer windowing
-
-        myfiles_row = build_row(
-            "Local Files",
-            "Where to upload my phoeos",
-            self._build_path_picker(self.entry_myfiles, "/"),
-        )
-
-        albums_row = build_row(
-            "Local Photos Path",
-            "Where to upload my Photos to",
-            self._build_path_picker(self.entry_albums, "/"),
-        )
-
-        photos_row = build_row(
-            "Local Photos Path",
-            "Where to upload my Photos to",
-            self._build_path_picker(self.entry_photos, "/"),
-        )
-
-        # --- Entries ID A/1 --- File Explorer windowing
-
-        trash_row = build_row(
-            "Local Pictures Path",
-            "Where to upload Pictures from",
-            self._build_path_picker(self.entry_trash, "/"),
-        )
-
-        cli_row = build_row(
-            "Proton Drive CLI Binary",
-            "Path to the proton-drive executable",
-            self.entry_cli,
-        )
-        # --- Preferences Group ---
-        group = Adw.PreferencesGroup()
-        group.set_title("Configure your Proton Drive")
-        group.set_description("Set where you want yo upload \n\n My Files | Computers | Photos | Shared | Shared with me | Trash ")
-        group.set_halign(Gtk.Align.START)
-        group.add(remote_myfiles_row)
-        group.add(remote_albums_row)
-        group.add(remote_photos_row)
-        group.add(remote_trash_row)
-        group.add(myfiles_row)
-        group.add(albums_row)
-        group.add(photos_row)
-        group.add(trash_row)
-        group.add(cli_row)
-
-        # --- Save Button ---
-        btn_save = Gtk.Button(label="Save Settings")
-        btn_save.add_css_class("suggested-action")
-        btn_save.set_size_request(400, -1)
-        btn_save.connect("clicked", self._on_save_clicked)
-
-        # --- Layout ---
-        container = Gtk.Box(
-            orientation=Gtk.Orientation.VERTICAL,
-            valign=Gtk.Align.CENTER,
-            halign=Gtk.Align.CENTER,
-            spacing=15,
-            margin_top=20,
-            margin_bottom=20,
-            margin_start=20,
-            margin_end=20,
-        )
-
-        container.append(group)
-        container.append(btn_save)
+        return shutil.which("proton-drive")
 
 
-        return container
-
-    def _build_path_picker(self, entry, label):
-        """Create a 'Browse...' button next to a text entry."""
-        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-
-        btn = Gtk.Button(label="Browse…")
-        btn.connect("clicked", lambda w: self._pick_folder(entry))
-        box.append(btn)
-
-        return box
-
-    def _pick_folder(self, entry):
-        """Open the file browser to pick a local folder."""
-        if not self._parent_window:
-            print("[Settings] No parent window for file browser")
-            return
-
-        browser = FileBrowserWindow(self._parent_window)
-
-        def on_selected(window, filepath):
-            entry.set_text(filepath)
-
-        browser.connect("file-selected", on_selected)
-        browser.present()
-
-    def _on_save_clicked(self, widget):
-        """Save all settings to config file."""
-        self.config["proton_drive_myfiles_remote"] = self.entry_remote_myfiles.get_text()
-        self.config["proton_drive_albums_remote"] = self.entry_remote_albums.get_text()
-        self.config["proton_drive_photos_remote"] = self.entry_remote_photos.get_text()
-        self.config["proton_drive_trash_remote"] = self.entry_remote_trash.get_text()
-        self.config["local_source_myfiles"] = self.entry_myfiles.get_text()
-        self.config["local_source_albums"] = self.entry_albums.get_text()
-        self.config["local_source_photos"] = self.entry_photos.get_text()
-        self.config["local_source_trash"] = self.entry_trash.get_text()
-        self.config["cli_binary"] = self.entry_cli.get_text()
-        success = ConfigManager.save(self.config)
-
-        # Show toast on parent window
-        if self._parent_window and hasattr(self._parent_window, "add_toast"):
-            msg = "✓ Settings saved!" if success else "✗ Failed to save settings"
-            self._parent_window.add_toast(Adw.Toast(title=msg, timeout=3))
+# ----------------------------------------------------------------------
+# Manual check:  python3 -m ui.function.config_manager
+# ----------------------------------------------------------------------
+if __name__ == "__main__":
+    cm = ConfigManager()
+    print(f"Config file : {CONFIG_FILE}")
+    print(f"Exists      : {CONFIG_FILE.exists()}")
+    print(f"CLI found   : {ConfigManager.find_cli(None)}")
+    print("--- effective config ---")
+    print(json.dumps(cm.load(), indent=2))
