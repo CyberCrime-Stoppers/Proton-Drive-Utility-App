@@ -54,7 +54,7 @@ _________________________________________________________
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="screenshot/v1210/HomeScreen_Page.png" alt="Proton Drive Utility App - Home Page -> Information & the Original Author on the Proton Drive Utility App " width="100%">
+<img src="screenshot/v9310-alpha/v9.3.10alpha-home-page.png" alt="Proton Drive Utility App - Home Page -> Information & the Original Author on the Proton Drive Utility App " width="100%">
  <br>
 <sub>
  <br>
@@ -62,7 +62,7 @@ _________________________________________________________
  <h4>Proton Drive Utility App (PDUA).</h4> 
  <br>
 </td>
-<td width="50%" valign="top"> <img src="screenshot/v1210/auth_sub-window.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<td width="50%" valign="top"> <img src="screenshot/v9310-alpha/v9.3.10alpha-login-windowing.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
  <br> 
 <sub>
  <br>
@@ -80,7 +80,7 @@ _________________________________________________________
 </table>
 
 <table>
-<td width="50%" valign="top"> <img src="screenshot/v127/dropdown_menu_appearances.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<td width="50%" valign="top"> <img src="screenshot/v1210/dropdown_menu_appearances.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
  <br> 
 <sub>
  <br>
@@ -95,7 +95,7 @@ _________________________________________________________
  <br> 
 <sub>
  <br>
-<td width="50%" valign="top"> <img src="screenshot/v1210/DropDown_Menu.png" alt="DropDown Menu -> Listed of options Login, New Window, Prefernces, Appearances, and Help." width="100%"> 
+<td width="50%" valign="top"> <img src="screenshot/v9310-alpha/v9.3.10alpha-home-page-drop-menu.png" alt="DropDown Menu -> Listed of options Login, New Window, Prefernces, Appearances, and Help." width="100%"> 
  <br> 
 <sub>
  <br>
@@ -114,7 +114,7 @@ _________________________________________________________
 </table>
 
 <table>
-<td width="50%" valign="top"> <img src="screenshot/v1210/GUI_Photos.png" alt="Proton Drive Album User Interface - first time to manage and View your Albums and Pictures/Videos." width="100%"> 
+<td width="50%" valign="top"> <img src="screenshot/v9310-alpha/v9.3.10alpha-file-explorer.png" alt="Proton Drive Album User Interface - first time to manage and View your Albums and Pictures/Videos." width="100%"> 
  <br> 
 <sub>
  <br>
@@ -167,7 +167,7 @@ _________________________________________________________
 </td>
 </tr> 
 <tr><td width="%10" valign="top">
- <h4>❌</h4>
+ <h4>✅</h4>
  <br>
  <h4>❌</h4>
  <br>
