@@ -1,188 +1,200 @@
 #!/usr/bin/env python3
-import sys
+
 import os
+import sys
+import logging
+
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
-from gi.repository import Gtk, Adw, Gio, GLib, GObject
-from ui.main_window import MainWindow
+gi.require_version("Gdk", "4.0")
 
-class PDUA(Adw.Application):
+from gi.repository import Gtk, Adw, Gio, GLib, Gdk
+
+# ---- App-wide logging (fixes silent 'pdua' logger) ----
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%H:%M:%S",
+)
+log = logging.getLogger("pdua")
+
+# ---- Project root on sys.path (so `ui.*` imports work from any CWD) ----
+ROOT = os.path.dirname(os.path.abspath(__file__))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
+
+class PduaApplication(Adw.Application):
     def __init__(self):
-        super().__init__(application_id="com.unixinbox.pdua")
+        super().__init__(
+            application_id="com.auth2portal.pdua",
+            flags=Gio.ApplicationFlags.FLAGS_NONE,
+        )
 
+    # --------------------------------------------------
+    # ACTIVATE — window creation lives here
+    # --------------------------------------------------
+    def do_activate(self):
+        # Icon theme registration (custom icons from assets/icons)
+        try:
+            self._register_icons()
+        except Exception as e:
+            log.warning(f"Icon registration skipped: {e}")
 
-    ICON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "icons")
+        win = self.props.active_window
+        if win is None:
+            from ui.main_window import MainWindow
+            win = MainWindow(application=self)
+        win.present()
+        log.info("MainWindow presented")
 
-    def _register_icons(self):
-        """Load custom album icons from assets/icons."""
-        if os.path.isdir(ICON_DIR):
-            display = Gdk.Display.get_default()
-            theme = Gtk.IconTheme.get_for_display(display)
-            theme.add_search_path(ICON_DIR)
-
+    # --------------------------------------------------
+    # STARTUP — actions registered once
+    # --------------------------------------------------
     def do_startup(self):
         Adw.Application.do_startup(self)
 
-        # ---- Register Actions ----
-        actions = [
-            ("new",           self._on_new),
-            ("albums",        self._on_albums),
-            ("open",          self._on_open),
-            ("quit",          self._on_quit),
-            ("settings",      self._on_settings),
-            ("about",         self._on_about),
-            ("shortcuts",     self._on_shortcuts),
-            ("login",         self._on_auth),
-            ("theme-dark",    self._on_theme_dark),
-            ("theme-light",   self._on_theme_light),
-            ("theme-system",  self._on_theme_system),
-        ]
-        for name, callback in actions:
+        # -- Quit --
+        action = Gio.SimpleAction.new("quit", None)
+        action.connect("activate", lambda a, p: self.quit())
+        self.add_action(action)
+
+        # -- New Window --
+        action = Gio.SimpleAction.new("new", None)
+        action.connect("activate", lambda a, p: self.do_activate())
+        self.add_action(action)
+
+        # -- Login / Logout --
+        action = Gio.SimpleAction.new("login", None)
+        action.connect("activate", self._on_login)
+        self.add_action(action)
+
+        # -- Settings --
+        action = Gio.SimpleAction.new("settings", None)
+        action.connect("activate", self._on_settings)
+        self.add_action(action)
+
+        # -- About --
+        action = Gio.SimpleAction.new("about", None)
+        action.connect("activate", self._on_about)
+        self.add_action(action)
+
+        # -- Shortcuts --
+        action = Gio.SimpleAction.new("shortcuts", None)
+        action.connect("activate", self._on_shortcuts)
+        self.add_action(action)
+
+        # -- Theme actions (Adw.ColorScheme, NOT gtk-application-prefer-dark-theme) --
+        for name, scheme in [
+            ("theme-dark",   "force-dark"),
+            ("theme-light",  "force-light"),
+            ("theme-system", "default"),
+        ]:
             action = Gio.SimpleAction.new(name, None)
-            action.connect("activate", callback)
+            action.connect(
+                "activate",
+                lambda a, p, s=scheme: Adw.StyleManager.get_default().set_color_scheme(
+                    getattr(Adw.ColorScheme, s.upper().replace("-", "_"))
+                ),
+            )
             self.add_action(action)
 
-        # ---- Build the Menu Model ----
-        menu = Gio.Menu()
+        # -- Keyboard accelerators --
+        self.set_accels_for_action("app.quit", ["<primary>q"])
+        self.set_accels_for_action("app.new", ["<primary>n"])
+        self.set_accels_for_action("app.settings", ["<primary>comma"])
+        self.set_accels_for_action("app.shortcuts", ["<primary>question"])
+        self.set_accels_for_action("win.back", ["<Alt>Left"])
 
-        login_section = Gio.Menu()
-        login_section.append("🔐  Login to Proton Drive…", "app.login")
-        menu.append_section(None, login_section)
+        log.info("Actions and accelerators registered")
 
-        app_section = Gio.Menu()
-        app_section.append("New Window", "app.new")
-        app_section.append("📸 Albums", "app.albums")
-        app_section.append("Open File…", "app.open")
-        app_section.append("Preferences", "app.settings")
-        menu.append_submenu("Application", app_section)
+    # --------------------------------------------------
+    # ICON REGISTRATION (was defined but never called)
+    # --------------------------------------------------
+    def _register_icons(self):
+        display = Gdk.Display.get_default()
+        if display is None:
+            return
+        icon_dir = os.path.join(ROOT, "assets", "icons")
+        if not os.path.isdir(icon_dir):
+            log.debug(f"No custom icon dir at {icon_dir} — skipping")
+            return
+        from gi.repository import Gtk as _Gtk
+        theme = _Gtk.IconTheme.get_for_display(display)
+        theme.add_search_path(icon_dir)
+        log.info(f"Custom icon search path added: {icon_dir}")
 
-        theme_menu = Gio.Menu()
-        theme_menu.append("🌙  Dark Mode", "app.theme-dark")
-        theme_menu.append("☀  Light Mode", "app.theme-light")
-        theme_menu.append("🖥  System Default", "app.theme-system")
-        menu.append_submenu("Appearance", theme_menu)
-
-        shortcuts_section = Gio.Menu()
-        shortcuts_section.append("Keyboard Shortcuts", "app.shortcuts")
-        menu.append_submenu("Shortcuts", shortcuts_section)
-
-        help_section = Gio.Menu()
-        help_section.append("About App", "app.about")
-        help_section.append("Quit", "app.quit")
-        menu.append_submenu("Help", help_section)
-
-        self.set_menubar(menu)
-
-        # Keyboard shortcuts
-        self.set_accels_for_action("app.quit", ["<Ctrl>Q"])
-        self.set_accels_for_action("app.new", ["<Ctrl>N"])
-        self.set_accels_for_action("app.albums", ["<Ctrl>A"])
-        self.set_accels_for_action("app.open", ["<Ctrl>O"])
-        self.set_accels_for_action("app.settings", ["<Ctrl>comma"])
-        self.set_accels_for_action("app.login", ["<Ctrl>L"])
-
-    def do_activate(self):
+    # --------------------------------------------------
+    # ACTION HANDLERS
+    # --------------------------------------------------
+    def _on_login(self, action, param):
         win = self.props.active_window
-        if not win:
-            win = MainWindow(application=self)
-        win.present()
-
-    # ---- Action Callbacks ----
-
-    def _on_new(self, action, param):
-        print("[Menu] New Window triggered")
-        win = MainWindow(application=self)
-        win.present()
-
-    def _on_open(self, action, param):
-        print("[Menu] Open File triggered")
-        from ui.function.pup.file_browser import FileBrowserWindow
-
-        parent = self.props.active_window
-        if parent:
-            browser = FileBrowserWindow(parent)
-
-            def on_file_selected(window, filepath):
-                print(f"[Main] Got file from browser: {filepath}")
-
-            browser.connect("file-selected", on_file_selected)
-            browser.present()
+        if win and hasattr(win, "open_login_window"):
+            win.open_login_window()
 
     def _on_settings(self, action, param):
-        print("[Menu] Settings triggered")
         win = self.props.active_window
-        if win:
+        if win and hasattr(win, "navigate_to"):
             win.navigate_to("settings")
 
     def _on_about(self, action, param):
-        print("[Menu] About triggered")
         win = self.props.active_window
-        if win:
+        if win and hasattr(win, "navigate_to"):
             win.navigate_to("about")
 
     def _on_shortcuts(self, action, param):
-        print("[Menu] Shortcuts triggered")
-
-    def _on_quit(self, action, param):
-        print("[Menu] Quit triggered")
-        self.quit()
-
-    # ---- Albums ----
-
-    def _on_albums(self, action, param):
-        print("[Menu] Albums triggered")
-        from ui.function.pup.remote.albums_window import AlbumsWindow
-
-        win = self.props.active_window
-        if not win:
-            return
-
-        # Prefer the CLI found by the window itself, else settings, else PATH
-        cli = "proton-drive"
-        finder = getattr(win, "_find_proton_drive_cli", None)
-        if finder:
-            cli = finder() or cli
-
-        albums_win = AlbumsWindow(win, cli_binary=cli)
-        albums_win.connect("album-opened",
-                           lambda w, name: print(f"[Main] Album opened: {name}"))
-        albums_win.present()
-
-    # ---- Login ----
-
-    def _on_auth(self, action, param):
-        """Open the login popup window from the dropdown menu."""
-        print("[Menu] Login triggered")
-        from ui.function.pup.auth_window import AuthWindow
-
-        parent = self.props.active_window
-        if parent:
-            auth_win = AuthWindow(parent, on_success=parent._on_login_success)
-            auth_win.present()
-
-    # ---- Theme ----
-
-    def _on_theme_dark(self, action, param):
-        Adw.StyleManager.get_default().set_color_scheme(
-            Adw.ColorScheme.FORCE_DARK
-        )
-
-    def _on_theme_light(self, action, param):
-        Adw.StyleManager.get_default().set_color_scheme(
-            Adw.ColorScheme.FORCE_LIGHT
-        )
-
-    def _on_theme_system(self, action, param):
-        Adw.StyleManager.get_default().set_color_scheme(
-            Adw.ColorScheme.DEFAULT
-        )
+        builder = Gtk.Builder()
+        builder.add_from_string("""
+        <interface>
+          <object class="GtkShortcutsWindow" id="shortcuts">
+            <property name="modal">True</property>
+            <child>
+              <object class="GtkShortcutsSection">
+                <property name="section-name">shortcuts</property>
+                <property name="max-height">10</property>
+                <child>
+                  <object class="GtkShortcutsGroup">
+                    <property name="title">General</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;Primary&gt;q</property>
+                        <property name="title">Quit</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;Primary&gt;n</property>
+                        <property name="title">New Window</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;Primary&gt;comma</property>
+                        <property name="title">Settings</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </interface>
+        """)
+        shortcuts = builder.get_object("shortcuts")
+        shortcuts.set_transient_for(self.props.active_window)
+        shortcuts.present()
 
 
 def main():
-    app = PDUA()
-    app.run(sys.argv)
+    app = PduaApplication()
+    # Exit code 0 with no window usually means app.run() returned immediately —
+    # this assert catches that class of bug loudly.
+    status = app.run(sys.argv[1:])
+    if status == 0 and app.props.active_window is None:
+        log.error("App exited 0 but no window was ever created!")
+    return status
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
