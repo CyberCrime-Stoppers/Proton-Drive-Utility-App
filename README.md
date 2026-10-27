@@ -4,11 +4,12 @@
  
 _________________________________________________________
 
-# Proton Drive Utility App (PDUA)
+# Proton Drive Utility App (PDUA) - Alpha
 - Unofficial
-- Currently in: _Beta._
+- Currently in: _Beta._ 
+- In Release: Alpha
 - Released Date: _07/03/2026. [MM/DD/YYYY]_
-- App version: _v1.2.10 - updated: 09/13/2026. [MM/DD/YYYY]_
+- App version: _v9.3.10 - updated: 10/27/2026. [MM/DD/YYYY]_
 - Language: _Python | Shell script_
 - Standard Libraries: _subprocess | threading | os | shutil | webbrowser | subprocess_
 - GUI Framework: gi (PyGObject) - _The bridge to access C libraries (GTK, Adw)._
