@@ -17,9 +17,9 @@ _________________________________________________________
 - _Opened Sourced & Publicly Available._
 
  > Version Numbers Legends: x.y.z 
- > x = Proton Drive CLI Binary File -Version
- > y = PDUA -Features & Functions.
- > z = PDUA -User Interface and Layout.
+- x = Proton Drive CLI Binary File -Version
+- y = PDUA -Features & Functions.
+- z = PDUA -User Interface and Layout.
  <br>
  
  
