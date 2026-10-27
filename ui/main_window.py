@@ -1,37 +1,45 @@
+#!/usr/bin/env python3
+"""
+Main Window for PDUA — v2 architecture
+Uses the unified TransferPage + FileExplorerPage registration loops.
+Replaces 14 individual page imports with 2 loops.
+
+Version v1.2.11-alpha (Still in testing & Fixes)
+"""
 import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 import os
-import shutil
-import subprocess
-import threading
-from ui.function.home_page import HomePage
-from ui.function.config.proton_settings_page import ProtonSettingsPage
-from ui.function.pup.remote.album_explorer_page import AlbumExplorerPage
-from ui.function.pup.remote.photo_explorer_page import PhotoExplorerPage
-from ui.tree.fixdo.upload_page import UploadPage
-from ui.tree.fixdo.download_page import DownloadPage
-from ui.tree.cusdo.uploader_page import UploaderPage
-from ui.tree.cusdo.downloader_page import DownloaderPage
-from ui.tree.down.doc_downloader_page import DocDownloaderPage
-from ui.tree.down.dwn_downloader_page import DwnDownloaderPage
-from ui.tree.down.pic_downloader_page import PicDownloaderPage
-from ui.tree.down.vid_downloader_page import VidDownloaderPage
-from ui.tree.down.mus_downloader_page import MusDownloaderPage
-from ui.tree.up.doc_uploader_page import DocUploaderPage
-from ui.tree.up.dwn_uploader_page import DwnUploaderPage
-from ui.tree.up.pic_uploader_page import PicUploaderPage
-from ui.tree.up.vid_uploader_page import VidUploaderPage
-from ui.tree.up.mus_uploader_page import MusUploaderPage
-from ui.function.config.settings_page import SettingsPage
-from ui.about_page import AboutPage
 from gi.repository import Gtk, Adw, Gio, GLib
+from ui.function.config_manager import ConfigManager, VERSION
+from ui.tree.transfer_page import TransferPage
+from ui.function.pup.remote.file_explorer_page import FileExplorerPage
+from ui.about_page import AboutPage
+from ui.function.pup.opt.context.my_files_page import MyFilesPage
 
+# Folder registry — one tuple per page, replacing 10 separate classes
+TRANSFER_PAGES = [
+    # (page_key,        direction,   folder,        mode)
+    ("upload",          "upload",    None,          "fixed"),    # Fixed: Export
+    ("download",        "download",  None,          "fixed"),    # Fixed: Import
+    ("uploader",        "upload",    None,          "custom"),   # Custom Export (any folder)
+    ("downloader",      "download",  None,          "custom"),   # Custom Import (any folder)
+    ("docuploader",     "upload",    "Documents",   "custom"),
+    ("dwnuploader",     "upload",    "Downloads",   "custom"),
+    ("picuploader",     "upload",    "Pictures",    "custom"),
+    ("viduploader",     "upload",    "Videos",      "custom"),
+    ("musuploader",     "upload",    "Music",       "custom"),
+    ("docdownloader",   "download",  "Documents",   "custom"),
+    ("dwndownloader",   "download",  "Downloads",   "custom"),
+    ("picdownloader",   "download",  "Pictures",    "custom"),
+    ("viddownloader",   "download",  "Videos",      "custom"),
+    ("musdownloader",   "download",  "Music",       "custom"),
+]
 
 class MainWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.set_title("Proton Drive Utility App")
+        self.set_title(f"Proton Drive Utility App v9.3.10-Alpha \n PDUA")
         self.set_default_size(1000, 800)
 
         # ---- Header Bar with Menu Button ----
@@ -43,13 +51,12 @@ class MainWindow(Adw.ApplicationWindow):
         theme_menu.append("☀  Light Mode", "app.theme-light")
         theme_menu.append("🖥  System Default", "app.theme-system")
 
-        # --- Main menu with Login at top ---
+        # --- Main menu ---
         menu_model = Gio.Menu()
         login_section = Gio.Menu()
         login_section.append("🔐  Login or Logout…", "app.login")
         menu_model.append_section(None, login_section)
         menu_model.append("New Window", "app.new")
-        # menu_model.append("📸 Albums", "app.albums")
         menu_model.append("Preferences", "app.settings")
         menu_model.append_submenu("Appearance", theme_menu)
 
@@ -71,30 +78,40 @@ class MainWindow(Adw.ApplicationWindow):
         self.page_stack.set_hexpand(True)
         self.page_stack.set_vexpand(True)
 
+
+        # --- Page dict ===
         self.pages = {}
-        self.pages["home"] = HomePage(on_navigate=self.navigate_to)
-        self.pages["protonsettingspage"] = ProtonSettingsPage(on_navigate=self.navigate_to)
-        self.pages["albums"] = AlbumExplorerPage(on_navigate=self.navigate_to)
-        self.pages["photo"] = PhotoExplorerPage(on_navigate=self.navigate_to)
-        self.pages["upload"] = UploadPage(on_navigate=self.navigate_to)
-        self.pages["download"] = DownloadPage(on_navigate=self.navigate_to)
-        self.pages["uploader"] = UploaderPage(on_navigate=self.navigate_to)
-        self.pages["downloader"] = DownloaderPage(on_navigate=self.navigate_to)
-        self.pages["docuploader"] = DocUploaderPage(on_navigate=self.navigate_to)
-        self.pages["dwnuploader"] = DwnUploaderPage(on_navigate=self.navigate_to)
-        self.pages["picuploader"] = PicUploaderPage(on_navigate=self.navigate_to)
-        self.pages["viduploader"] = VidUploaderPage(on_navigate=self.navigate_to)
-        self.pages["musuploader"] = MusUploaderPage(on_navigate=self.navigate_to)
-        self.pages["docdownloader"] = DocDownloaderPage(on_navigate=self.navigate_to)
-        self.pages["dwndownloader"] = DwnDownloaderPage(on_navigate=self.navigate_to)
-        self.pages["picdownloader"] = PicDownloaderPage(on_navigate=self.navigate_to)
-        self.pages["viddownloader"] = VidDownloaderPage(on_navigate=self.navigate_to)
-        self.pages["musdownloader"] = MusDownloaderPage(on_navigate=self.navigate_to)
-        self.pages["settings"] = SettingsPage(on_navigate=self.navigate_to)
+
+        # --- Standard pages ---
+        self.pages["home"] = self._build_home_page()
+        self.pages["synccenterpage"] = self._build_sync_center()
+        self.pages["mydir"] = FileExplorerPage(
+            root="/", title="Drive Explorer", on_navigate=self.navigate_to
+        )
+        
+        # --- Pup sub-folders (My Files, Albums, Photos) ---
+        self.pages["myfiles"] = FileExplorerPage(
+            root="/my-files", title="My Files", on_navigate=self.navigate_to
+        )
+        self.pages["albums"] = FileExplorerPage(
+            root="/albums", title="Albums", on_navigate=self.navigate_to
+        )
+        self.pages["photos"] = FileExplorerPage(
+            root="/photos", title="Photos", on_navigate=self.navigate_to
+        )
+
+        # --- Registration LOOP: replaces 14 imports + 14 page constructions ---
+        for key, direction, folder, mode in TRANSFER_PAGES:
+            self.pages[key] = TransferPage(
+                direction=direction, folder=folder, mode=mode,
+                on_navigate=self.navigate_to
+            )
+
+        # --- Settings & About ---
+        self.pages["settings"] = self._build_settings_page()
         self.pages["about"] = AboutPage(on_navigate=self.navigate_to)
 
-
-        # Builds stack widgets for all registered pages
+        # --- Build stack widgets for all registered pages ---
         for key, page in self.pages.items():
             page_widget = page.build(parent_window=self)
             self.page_stack.add_named(page_widget, key)
@@ -120,7 +137,7 @@ class MainWindow(Adw.ApplicationWindow):
         outer.append(header)
         outer.append(box)
 
-        # ---- Toast overlay: wraps everything so add_toast() works ----
+        # ---- Toast overlay ----
         self._toast_overlay = Adw.ToastOverlay()
         self._toast_overlay.set_child(outer)
         self.set_content(self._toast_overlay)
@@ -130,48 +147,52 @@ class MainWindow(Adw.ApplicationWindow):
         # ---- Auth gate on startup ----
         self._check_auth_and_navigate()
 
-    def add_toast(self, toast):
-        """Public helper so pages can call parent_window.add_toast()."""
-        self._toast_overlay.add_toast(toast)
+    # =====================================================
+    # Page builders — local imports avoid circular deps
+    # =====================================================
+
+    def _build_home_page(self):
+        from ui.function.home_page import HomePage
+        return HomePage(on_navigate=self.navigate_to)
+
+    def _build_sync_center(self):
+        from ui.function.config.sync_center_page import SyncCenterPage
+        return SyncCenterPage(on_navigate=self.navigate_to)
+
+    def _build_settings_page(self):
+        from ui.function.config.settings_page import SettingsPage
+        return SettingsPage(on_navigate=self.navigate_to)
+
+    # =====================================================
+    # Sidebar
+    # =====================================================
 
     def _build_sidebar(self):
-        """Sidebar with flat items and expandable dropdown groups."""
         container = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         container.add_css_class("navigation-sidebar")
 
-        # --- Top-level flat items ---
+        # Top-level flat items
         for label, key in [
-            ("🏠  Home", "home"),
-            ("🛡️  Proton Settings Page", "protonsettingspage"),
-            ("🖼️ Album Browser", "albums"),
-            ("📸 Photo Browser", "photo"),
+            ("🏠 Home", "home"),
+            ("⚡ Sync Center", "synccenterpage"),
+            ("🗃️ File Explorer", "mydir"),
+            ("🛞 AutoSync Setup", "autosync"),
         ]:
             container.append(self._make_nav_button(label, key))
 
-        # --- Expandable groups ---
+        # Expandable groups — built FROM THE SAME REGISTRY TABLE
+        # (single source of truth: sidebar can never desync from pages)
         groups = [
-            ("⬆  Upload to Proton", [
-                ("Fixed: Export", "upload"),
-                ("Custom Export: Fixed Directory", "uploader"),
-                ("Custom Export: Documents", "docuploader"),
-                ("Custom Export: Downloads", "dwnuploader"),
-                ("Custom Export: Pictures", "picuploader"),
-                ("Custom Export: Videos", "viduploader"),
-                ("Custom Export: Music", "musuploader"),
-            ]),
-            ("⬇  Download from Proton", [
-                ("Fixed: Import", "download"),
-                ("Custom Import: Fixed Directory", "downloader"),
-                ("Custom Import: Documents", "docdownloader"),
-                ("Custom Import: Downloads", "dwndownloader"),
-                ("Custom Import: Pictures", "picdownloader"),
-                ("Custom Import: Videos", "viddownloader"),
-                ("Custom Import: Music", "musdownloader"),
-
-            ]),
+            ("⬆  Upload to Proton", "upload"),
+            ("⬇  Download from Proton", "download"),
         ]
 
-        for group_label, items in groups:
+        for group_label, direction in groups:
+            group_items = [
+                (self._sidebar_label(entry), entry[0])
+                for entry in TRANSFER_PAGES if entry[1] == direction
+            ]
+
             expander = Gtk.Expander(label=group_label)
             expander.set_expanded(True)
             expander.add_css_class("sidebar-group")
@@ -179,20 +200,30 @@ class MainWindow(Adw.ApplicationWindow):
             inner_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
             inner_box.set_margin_start(12)
 
-            for sub_label, sub_key in items:
+            for sub_label, sub_key in group_items:
                 inner_box.append(self._make_nav_button(sub_label, sub_key, indent=True))
 
             expander.set_child(inner_box)
             container.append(expander)
 
-        # --- Bottom flat items ---
+        # Bottom flat items
         for label, key in [("⚙  Options", "settings"), ("ℹ  About", "about")]:
             container.append(self._make_nav_button(label, key))
 
         return container
 
+    @staticmethod
+    def _sidebar_label(entry):
+        """Generate a descriptive sidebar label from a TRANSFER_PAGES entry."""
+        _, direction, folder, mode = entry
+        action = "Export" if direction == "upload" else "Import"
+        if mode == "fixed":
+            return f"Fixed: {action}"
+        if folder is None:
+            return f"Custom {action}: Any Folder"
+        return f"Custom {action}: {folder}"
+
     def _make_nav_button(self, label, page_key, indent=False):
-        """Create a single navigation button."""
         btn = Gtk.Button(label=label)
         btn.set_has_frame(False)
         btn.set_halign(Gtk.Align.FILL)
@@ -202,35 +233,48 @@ class MainWindow(Adw.ApplicationWindow):
         return btn
 
     def navigate_to(self, page_key):
-        """Switch the visible page."""
+        """Switch the visible page, with KeyError protection."""
+        if page_key not in self.pages:
+            print(f"[Nav] Unknown page: {page_key}")
+            return
         self.page_stack.set_visible_child_name(page_key)
 
-    # ===== LOGIN (called from app action + login toast) =====
+    # =====================================================
+    # Toast helper
+    # =====================================================
+
+    def add_toast(self, toast):
+        self._toast_overlay.add_toast(toast)
+
+    # =====================================================
+    # LOGIN
+    # =====================================================
 
     def open_login_window(self):
-        """Open the login popup window (shared entry point)."""
         from ui.function.pup.auth_window import AuthWindow
-
         auth_win = AuthWindow(self, on_success=self._on_login_success)
         auth_win.present()
 
     def _on_login_success(self):
-        """Called when the login popup reports success."""
         self.navigate_to("home")
         self.add_toast(Adw.Toast(title="✓ Logged in to Proton Drive"))
 
-    # ===== AUTH GATE =====
+    # =====================================================
+    # AUTH GATE (uses unified config manager)
+    # =====================================================
 
     def _check_auth_and_navigate(self):
-        """Check CLI auth status on startup, notify if not logged in."""
-        cli = self._find_proton_drive_cli()
+        import threading
+        import subprocess
+
+        cli = ConfigManager.find_cli(None)
 
         if not cli:
             print("[PDUA] proton-drive CLI not found")
             toast = Adw.Toast(
                 title="⚠ proton-drive CLI not found — click menu → Login to set up"
             )
-            toast.set_timeout(0)  # persistent until dismissed
+            toast.set_timeout(0)
             self.add_toast(toast)
             return
 
@@ -239,18 +283,13 @@ class MainWindow(Adw.ApplicationWindow):
         ).start()
 
     def _find_proton_drive_cli(self):
-        """Locate the proton-drive CLI binary."""
-        candidates = [
-            "/usr/bin/proton-drive",
-            "/usr/local/bin/proton-drive",
-            os.path.expanduser("~/.local/bin/proton-drive"),
-        ]
-        for path in candidates:
-            if os.path.isfile(path) and os.access(path, os.X_OK):
-                return path
-        return shutil.which("proton-drive")
+        """Retained for backward compat (menu code calls this)."""
+        return ConfigManager.find_cli(None)
 
     def _do_auth_check(self, cli):
+        import threading
+        import subprocess
+
         try:
             result = subprocess.run(
                 [cli, "auth", "status"],
@@ -262,7 +301,6 @@ class MainWindow(Adw.ApplicationWindow):
             print(f"[PDUA] Auth check error: {e}")
 
     def _show_login_toast(self):
-        """Persistent toast prompting login, with a Login button."""
         toast = Adw.Toast(
             title="Not logged in — click Login to connect to Proton Drive"
         )
