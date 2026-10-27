@@ -16,6 +16,13 @@ _________________________________________________________
 - Module(s): _GTK4 | Libadwaita_
 - _Opened Sourced & Publicly Available._
 
+ > Version Numbers Legends: x.y.z 
+ > x = Proton Drive CLI Binary File -Version
+ > y = PDUA -Features & Functions.
+ > z = PDUA -User Interface and Layout.
+ <br>
+ 
+ 
 ### AI vs Human - Developed. [Created By]
 - LLM/AI (%)
 
