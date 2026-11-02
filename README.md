@@ -88,7 +88,7 @@ _________________________________________________________
 </table>
 
 <table>
-<td width="50%" valign="top"> <img src="screenshot/v1210/dropdown_menu_appearances.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
+<td width="50%" valign="top"> <img src="screenshot/v126/dropdown_menu_appearances.png" alt="Proton Regular Login -> as you would use the login method in Command Line Interface." width="100%"> 
  <br> 
 <sub>
  <br>
