@@ -114,7 +114,7 @@ _________________________________________________________
  <br>
  <p><br><br></p>
  
- <mark>Note: the Preferences option listed is still needs some work and it's not functional.</mark>
+ <mark>Note: the Preferences option is now functional - will be more settings options</mark>
  <br> 
 <sub>
 </td>
