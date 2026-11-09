@@ -2,6 +2,8 @@
  #### Proton Drive Utility App (PDUA); CyberCrime-Stoppers (CCS). is the original & Founder of the Developement of this Linux APP. Proudly on Developing this App for Proton AG Users. <br> For users that want more with their Cloud Drive situations. 
  
  
+### This Linux App will be for The Linux Destribution that is being developed by 'C.C.S Scott Dev' also will work for other linux distros
+ 
 _________________________________________________________
 
 # Proton Drive Utility App (PDUA) - Alpha
